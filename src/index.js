@@ -1,12 +1,29 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import { store, history } from './store'
+import ReactDom from 'react-dom';
+// import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+
+import HomePage from './components/home-page.js';
+import LandingPage from './components/landing-page.js'
+
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+// import './reset.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDom.render((
+    // <Provider store={store}>
+      <Router>
+        <Switch>
+          <div className="app">
+            <nav className="navBar">
+              <header><h1><Link to ='/'>Fit Tracker</Link></h1></header>
+            </nav>
+            <main>
+              <Route exact path='/' component={LandingPage} />
+              <Route exact path='/home' component={HomePage} />
+            </main>
+          </div>
+        </Switch>
+      </Router>
+    // </Provider>
+  ), document.getElementById('root'));

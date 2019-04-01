@@ -1,0 +1,17 @@
+.previous {
+  background-color: wheat;
+  margin-top: 0;
+  height: 150px;
+  border-bottom: 1px solid black;
+}
+
+.previous h2 {
+  margin: 0;
+  padding-top: 35px;
+}
+
+.workouts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
