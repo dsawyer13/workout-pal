@@ -1,26 +1,37 @@
 import React from 'react';
+import {connect} from 'react-redux';
+
 import AddWorkout from './add-workout.js';
-import WorkoutForm from './workout-form.js';
 import Exercise from './exercise.js';
-import FinishWorkout from './finish-workout.js';
+
+
+import {addWorkout} from '../actions';
 
 import './new-workout-section.css';
 
-export default function NewWorkoutSection(props) {
+export class NewWorkoutSection extends React.Component {
+  componentDidMount() {
+    this.props.dispatch(fetchWorkouts());
+  }
 
-  return(
-    <div class="newSection">
-      <AddWorkout />
-      <div className="exercises">
-        <h2>Workout Log</h2>
-        <Exercise />
-        <Exercise />
-        <Exercise />
+  render() {
+    const exercises = this.props.exercise
+
+    return(
+      <div class="newSection">
+        <div className="exercises">
+          <h2>Workout Log</h2>
+          {exercises}
+        </div>
+        <AddWorkout />
       </div>
-      <WorkoutForm />
-      <FinishWorkout />
-    </div>
 
-  )
-
+    )
+  }
 }
+
+const mapStateToProps = state => ({
+  workouts: state.workouts
+});
+
+export default connect(mapStateToProps)(NewWorkoutSection);

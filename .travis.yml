@@ -3,6 +3,11 @@ node_js: node
 cache:
   directories:
   - node_modules
+install:
+  - npm install
+script:
+  - npm start
+  - npm test
 env:
 - CI=true
 deploy:

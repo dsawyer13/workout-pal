@@ -13,8 +13,8 @@ export default function Exercise(props) {
 }
 
 Exercise.defaultProps = {
-  name: "Bench Press",
-  weight: "225",
-  sets: "3",
-  reps: "5"
+  name: "",
+  weight: "",
+  sets: "",
+  reps: ""
 }

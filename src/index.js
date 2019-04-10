@@ -1,17 +1,18 @@
 import React from 'react';
-// import { store, history } from './store'
 import ReactDom from 'react-dom';
-// import { Provider } from 'react-redux';
+import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-
 import HomePage from './components/home-page.js';
 import LandingPage from './components/landing-page.js'
-
+import store from './store';
 import './index.css';
-// import './reset.css';
+import './reset.css';
+
+
+
 
 ReactDom.render((
-    // <Provider store={store}>
+    <Provider store={store}>
       <Router>
         <Switch>
           <div className="app">
@@ -25,5 +26,5 @@ ReactDom.render((
           </div>
         </Switch>
       </Router>
-    // </Provider>
+    </Provider>
   ), document.getElementById('root'));
