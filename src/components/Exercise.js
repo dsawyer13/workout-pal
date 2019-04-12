@@ -8,9 +8,8 @@ export default function Exercise(props) {
       <span className="sets">{props.sets} sets </span>
       <span className="reps">{props.reps} reps</span>
     </div>
-  )
-
-}
+  );
+};
 
 Exercise.defaultProps = {
   name: "",
