@@ -3,15 +3,15 @@ import Workout from './Workout';
 import AddWorkoutForm from './AddWorkoutForm';
 import Stats from './Stats';
 
-import {addWorkout} from '../actions';
+import {addWorkout, fetchWorkouts} from '../actions';
 
 export class HomePage extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchWorkouts());
   }
 
-  addWorkout(workout) {
-    this.props.dispatch(addWorkout(workout));
+  addWorkout(exercises) {
+    this.props.dispatch(addWorkout(exercises));
   }
 
 

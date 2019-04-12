@@ -43,7 +43,7 @@ export const fetchWorkoutsSuccess = (workouts) => ({
   workouts
 })
 
-export const fetchWorkouts = () => {
+export const fetchWorkouts = () => dispatch => {
   fetch(`${API_BASE_URL}/workouts`)
     .then(res => {
       if (!res.ok) {

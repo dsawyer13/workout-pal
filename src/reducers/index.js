@@ -13,28 +13,29 @@ export const workoutReducer = (state=initialState, action) => {
         finished: action.finished,
         exercises: action.exercises
       }]
-    })
+    });
   }
-  else if (action.type === actions.REMOVE_WORKOUT_SUCCESS) {
-    return
-  }
-  else if (action.type === actions.EDIT_WORKOUT_SUCCESS) {
-    return
-  }
-  else if (action.type === actions.ADD_EXERCISE_SUCCESS) {
-    return
-    }
-   else if (action.type == actions.EDIT_EXERCISE_SUCCESS) {
-     return
-   }
-   else if (action.type === actions.DELETE_EXERCISE_SUCCESS) {
-     return
-   }
-   else if (action.type === actions.CANCEL_EXERCISE_SUCCESS) {
-     return
-    }
+  // else if (action.type === actions.REMOVE_WORKOUT_SUCCESS) {
+  //   return
+  // }
+  // else if (action.type === actions.EDIT_WORKOUT_SUCCESS) {
+  //   return
+  // }
+  // else if (action.type === actions.ADD_EXERCISE_SUCCESS) {
+  //   return
+  //   }
+  //  else if (action.type == actions.EDIT_EXERCISE_SUCCESS) {
+  //    return
+  //  }
+  //  else if (action.type === actions.DELETE_EXERCISE_SUCCESS) {
+  //    return
+  //  }
+  //  else if (action.type === actions.CANCEL_EDIT_SUCCESS) {
+  //    return
+  //   }
     else if (action.type === actions.FETCH_WORKOUTS_SUCCESS) {
-      return action.workouts;
+      let newState = workouts: action.workouts
+      return
     }
     return state;
 };
