@@ -1,10 +1,11 @@
 import * as actions from '../actions';
+export
 
 const initialState = {
   workouts: []
 };
 
-export const workoutReducer = (state=initialState, action) => {
+export const workoutPalReducer = (state=initialState, action) => {
   if (action.type === actions.ADD_WORKOUT_SUCCESS) {
     return Object.assign({}, state, {
       workouts: [...state.workouts, {
@@ -15,27 +16,8 @@ export const workoutReducer = (state=initialState, action) => {
       }]
     });
   }
-  // else if (action.type === actions.REMOVE_WORKOUT_SUCCESS) {
-  //   return
-  // }
-  // else if (action.type === actions.EDIT_WORKOUT_SUCCESS) {
-  //   return
-  // }
-  // else if (action.type === actions.ADD_EXERCISE_SUCCESS) {
-  //   return
-  //   }
-  //  else if (action.type == actions.EDIT_EXERCISE_SUCCESS) {
-  //    return
-  //  }
-  //  else if (action.type === actions.DELETE_EXERCISE_SUCCESS) {
-  //    return
-  //  }
-  //  else if (action.type === actions.CANCEL_EDIT_SUCCESS) {
-  //    return
-  //   }
     else if (action.type === actions.FETCH_WORKOUTS_SUCCESS) {
-      let newState = workouts: action.workouts
-      return
+      return action.workouts;
     }
     return state;
 };

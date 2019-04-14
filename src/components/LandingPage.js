@@ -1,7 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import './landing-page.css';
-import HomePage from './home-page.js';
+import { Link } from 'react-router-dom';
+
 
 export default function LandingPage() {
   return(
@@ -19,11 +18,11 @@ export default function LandingPage() {
           <p>Workout Pal uses the scientifically proven method of progressive
             overload to get you results faster. Watch your strength improve week
              by week with your personalized strength statistics.</p>
-          <div class="graphImage">Placeholder for image</div>
+          <div className="graphImage">Placeholder for image</div>
           <button><Link to="/home">Get Started</Link></button>
         </div>
       </div>
-      <footer role="content-info">Footer</footer>
+      <footer>Footer</footer>
     </main>
 
   )

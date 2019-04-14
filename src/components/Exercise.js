@@ -2,12 +2,12 @@ import React from 'react';
 
 export default function Exercise(props) {
   return(
-    <div className="exercise">
+    <li className="exercise" id={props.id}>
       <span className="name">{props.name} </span>
       <span className="weight">{props.weight} lbs </span>
       <span className="sets">{props.sets} sets </span>
       <span className="reps">{props.reps} reps</span>
-    </div>
+    </li>
   );
 };
 

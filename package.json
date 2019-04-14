@@ -2,19 +2,24 @@
   "name": "fit-tracker",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "body-parser": "^1.18.3",
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
+    "date-fns": "^1.30.1",
     "express": "^4.16.4",
     "mocha": "^6.0.2",
     "mongoose": "^5.4.20",
     "react": "^16.8.6",
+    "react-accessible-accordion": "^3.0.0",
     "react-dom": "^16.8.6",
+    "react-redux": "^7.0.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "semantic-ui-react": "^0.86.0"
   },
   "scripts": {
     "start": "react-scripts start",

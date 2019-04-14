@@ -11,20 +11,22 @@ import './reset.css';
 
 
 
-ReactDom.render((
+ReactDom.render(
     <Provider store={store}>
       <Router>
         <Switch>
-          <div className="app">
+          <>
             <nav className="navBar">
-              <header><h1><Link to ='/'>Workout Buddy</Link></h1></header>
+              <header>
+                <h1><Link to ='/'>Workout Buddy</Link></h1>
+              </header>
             </nav>
             <main>
               <Route exact path='/' component={LandingPage} />
               <Route exact path='/home' component={HomePage} />
             </main>
-          </div>
+          </>
         </Switch>
       </Router>
     </Provider>
-  ), document.getElementById('root'));
+  , document.getElementById('root'));

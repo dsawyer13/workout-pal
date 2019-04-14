@@ -1,10 +1,9 @@
 import React from 'react';
-import { Dropdown } from 'semantic-ui-react';
-import {connect} from 'react-redux';
-import {Exercise} from './Exercise';
+// import { Dropdown } from 'semantic-ui-react';
+import Exercise from './Exercise.js';
 
 
-export class AddWorkoutForm extends React.Component {
+export default class AddWorkoutForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,13 +23,14 @@ export class AddWorkoutForm extends React.Component {
     this.setState({[e.currentTarget.name]: e.currentTarget.value});
   }
 
-  onClick = (e) => {
+  addWorkout = (e) => {
     e.preventDefault();
     if (this.state.exercises && this.props.onAdd) {
       this.props.onAdd(this.state.exercises);
     }
     this.setState({exercises: []})
   }
+
 
   addExercise = (e) => {
     e.preventDefault();
@@ -41,6 +41,7 @@ export class AddWorkoutForm extends React.Component {
       reps: this.state.reps
       }]
     });
+    this.setState({name: "", weight: "", sets: "", reps: ""})
   }
 
   removeExercise = (index) => {
@@ -51,18 +52,18 @@ export class AddWorkoutForm extends React.Component {
 
 
   render() {
-    const exercises = this.state.exercises.map((exercise, index) => (
+    const exercises = this.state.exercises.map((exercise, index) =>
       <li key={index}>
         <Exercise {...exercise} />
         <input type="button" value="delete" onClick={index => this.removeExercise(index)} />
       </li>
-    ));
+    );
 
     if(!this.state.editing) {
       return(
         <div className="add-workout"
         onClick={() =>{this.setEditing(true)}}>
-          <a href="#">+ New Workout</a>
+          <button>+ New Workout</button>
         </div>
       );
     }
@@ -73,29 +74,29 @@ export class AddWorkoutForm extends React.Component {
         onClick={() => {
           this.setEditing(false);
           this.setState({exercises: []});}}>
-          <a href="#">Cancel</a>
+          <button>Cancel</button>
         </div>
 
         <ul className="exercise-list">
           {exercises}
         </ul>
 
-        <form className="workout-form" addExercise={this.addExercise}>
+        <form className="workout-form" onSubmit={this.addExercise}>
           <label>Exercise:
-            <input type="text" name="name" onChange={this.onChange} value={this.state.name} />
+            <input type="text" name="name" onChange={this.onChange} value={this.state.name || ''} />
           </label>
           <label>Weight(lbs):
-            <input type="number" name="weight" onChange={this.onChange} value={this.state.weight} />
+            <input type="number" name="weight" onChange={this.onChange} value={this.state.weight || ''} />
           </label>
           <label>Sets:
-            <input type="number" name="sets" onChange={this.onChange} value={this.state.sets} />
+            <input type="number" name="sets" onChange={this.onChange} value={this.state.sets || ''} />
           </label>
           <label>Reps:
-            <input type="number" name="reps" onChange={this.onChange} value={this.state.reps} />
+            <input type="number" name="reps" onChange={this.onChange} value={this.state.reps || ''} />
           </label>
           <input type="submit" value="Add Exercise" />
+          <input type="button" className="finish-workout" value="Finish Workout" onClick={this.onSubmit} />
         </form>
-        <input type="button" className="finish-workout" value="Finish Workout" onClick={this.onClick} />
       </div>
     )
   }
