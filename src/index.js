@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import HomePage from './components/HomePage.js';
 import LandingPage from './components/LandingPage.js';
 import store from './store';
+import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
-import './reset.css';
 
 
 

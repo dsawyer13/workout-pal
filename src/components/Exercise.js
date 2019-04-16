@@ -1,13 +1,14 @@
 import React from "react";
+import Table from "react-bootstrap";
 
 export default function Exercise(props) {
   return (
-    <li className="exercise" id={props._id}>
-      <span className="name">{props.name}</span>
-      <span className="weight">{props.weight} lbs</span>
-      <span className="sets">{props.sets} sets</span>
-      <span className="reps">{props.reps} reps</span>
-    </li>
+    <>
+      <td className="name">{props.name}</td>
+      <td className="weight">{props.weight} lbs</td>
+      <td className="sets">{props.sets} sets</td>
+      <td className="reps">{props.reps} reps</td>
+    </>
   );
 }
 

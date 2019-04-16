@@ -3,6 +3,7 @@ import Workout from "./Workout";
 import Exercise from "./Exercise";
 import AddWorkoutForm from "./AddWorkoutForm";
 import Stats from "./Stats";
+import { Table, Button } from 'react-bootstrap';
 import { connect } from "react-redux";
 import {
   Accordion,
@@ -13,6 +14,7 @@ import {
 } from "react-accessible-accordion";
 
 import "./home-page.css";
+import 'react-accessible-accordion/dist/fancy-example.css';
 
 import { addWorkout, deleteExercise, fetchWorkouts } from "../actions";
 
@@ -34,20 +36,33 @@ export class HomePage extends React.Component {
       <AccordionItem key={index}>
         <AccordionItemHeading>
           <AccordionItemButton>
-            <Workout {...workout} />
+              <Workout {...workout} />
           </AccordionItemButton>
         </AccordionItemHeading>
         <AccordionItemPanel>
-          {workout.exercises.map((exercise, index) => (
-            <>
-              <Exercise key={index} {...exercise} />
-              <input
-                type="button"
-                value="X"
-                onClick={id => this.deleteExercise(exercise._id)}
-              />
-            </>
-          ))}
+          <Table>
+            <thead>
+              <th>#</th>
+              <th>Exercise</th>
+              <th>Weight</th>
+              <th>Sets</th>
+              <th>Reps</th>
+            </thead>
+            <tbody>
+            {workout.exercises.map((exercise, index) => (
+              <tr className="exercise">
+                <td>{index+1}</td>
+                <Exercise key={index} {...exercise} />
+                <Button variant="danger" onClick={id => this.deleteExercise(exercise._id)}>
+                  Delete
+                </Button>
+              </tr>
+            ))}
+            </tbody>
+          </Table>
+          <Button variant="success">
+            Edit
+          </Button>
         </AccordionItemPanel>
       </AccordionItem>
     ));
