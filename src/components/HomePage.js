@@ -1,6 +1,6 @@
 import React from "react";
 import Workout from "./Workout";
-import Exercise from "./Exercise";
+import Exercise from "./Exercise"
 import AddWorkoutForm from "./AddWorkoutForm";
 import Stats from "./Stats";
 import { Table, Button } from 'react-bootstrap';
@@ -19,17 +19,22 @@ import 'react-accessible-accordion/dist/fancy-example.css';
 import { addWorkout, deleteExercise, fetchWorkouts } from "../actions";
 
 export class HomePage extends React.Component {
+
   componentDidMount() {
     this.props.dispatch(fetchWorkouts());
   }
 
-  addWorkout(exercises) {
+  addWorkout = exercises => {
     this.props.dispatch(addWorkout(exercises));
+  }
+
+  editExercise = () => {
+    this.setState({display: true})
   }
 
   deleteExercise = id => {
     this.props.dispatch(deleteExercise(id));
-  };
+  }
 
   render() {
     const workouts = this.props.workouts.map((workout, index) => (
@@ -42,27 +47,28 @@ export class HomePage extends React.Component {
         <AccordionItemPanel>
           <Table>
             <thead>
-              <th>#</th>
-              <th>Exercise</th>
-              <th>Weight</th>
-              <th>Sets</th>
-              <th>Reps</th>
+              <tr>
+                <th>#</th>
+                <th>Exercise</th>
+                <th>Weight</th>
+                <th>Sets</th>
+                <th>Reps</th>
+              </tr>
             </thead>
             <tbody>
             {workout.exercises.map((exercise, index) => (
               <tr className="exercise">
                 <td>{index+1}</td>
                 <Exercise key={index} {...exercise} />
-                <Button variant="danger" onClick={id => this.deleteExercise(exercise._id)}>
-                  Delete
-                </Button>
+                <td>
+                  <Button variant="danger" onClick={id => this.deleteExercise(exercise._id)}>
+                    Delete
+                  </Button>
+                </td>
               </tr>
             ))}
             </tbody>
           </Table>
-          <Button variant="success">
-            Edit
-          </Button>
         </AccordionItemPanel>
       </AccordionItem>
     ));

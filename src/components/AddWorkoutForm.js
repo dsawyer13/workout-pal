@@ -1,5 +1,6 @@
 import React from "react";
 import Exercise from "./Exercise.js";
+import TableForm from "./TableForm.js";
 import { Form, Col, Row, Button, InputGroup, Table } from 'react-bootstrap';
 import Select from 'react-select';
 import { groupedOptions } from '../data.js';
@@ -9,16 +10,24 @@ export default class AddWorkoutForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      editing: false,
+      adding: false,
       exercises: [],
-      display: false
+      display: false,
+      editing: false,
+      name: "",
+      weight: "",
+      sets: "",
+      reps: ""
     };
   }
 
+  setEditing = () => {
+    this.setState({editing: true});
+  }
 
-  setEditing = editing => {
+  setAdding = adding => {
     this.setState({
-      editing
+      adding
     });
   };
 
@@ -71,22 +80,44 @@ export default class AddWorkoutForm extends React.Component {
       </div>
     );
 
-    const exercises = this.state.exercises.map((exercise, index) => (
-      <tr className="exercise">
-        <td>{index+1}</td>
-        <Exercise  key={index} {...exercise} />
-        <Button type="danger" onClick={index => this.deleteExercise(index)}>
-          Delete
-        </Button>
-      </tr>
-    ));
+    const exercises = this.state.exercises.map((exercise, index) => {
+      console.log(index)
+      if (!this.state.editing) {
+        return (<tr className="exercise">
+            <td>{index+1}</td>
+            <Exercise  key={index} {...exercise} />
+            <Button variant="warning" onClick={this.setEditing}>
+              Edit
+            </Button>
+            <Button variant="danger" onClick={index => this.deleteExercise(index)}>
+              Delete
+            </Button>
+          </tr>)
+        } else {
+          return (
+            
+            <tr>
 
-    if (!this.state.editing) {
+              <td>{index+1}</td>
+              <TableForm
+                index={index}
+                name={this.state.exercises[index].name}
+                weight={this.state.exercises[index].weight}
+                sets={this.state.exercises[index].sets}
+                reps={this.state.exercises[index].reps}
+              />
+            </tr>
+
+          )
+        }
+      });
+
+    if (!this.state.adding) {
       return (
         <div
           className="add-workout"
           onClick={() => {
-            this.setEditing(true);
+            this.setAdding(true);
           }}
         >
           <Button variant="success">+ New Workout</Button>
@@ -98,11 +129,14 @@ export default class AddWorkoutForm extends React.Component {
     if (this.state.display) {
       head = (
         <thead>
-          <th>#</th>
-          <th>Exercise</th>
-          <th>Weight</th>
-          <th>Sets</th>
-          <th>Reps</th>
+          <tr>
+            <th>#</th>
+            <th>Exercise</th>
+            <th>Weight</th>
+            <th>Sets</th>
+            <th>Reps</th>
+            <th>Action</th>
+          </tr>
         </thead>)
     }
 
@@ -125,6 +159,7 @@ export default class AddWorkoutForm extends React.Component {
                   placeholder="Exercise..."
                   name="name"
                   onChange={this.onSelect}
+                  required
                  />
               </Form.Group>
             </Col>
@@ -132,7 +167,9 @@ export default class AddWorkoutForm extends React.Component {
               <Form.Group>
                 <Form.Label>Weight</Form.Label>
                 <InputGroup>
-                  <Form.Control type="number" name="weight" placeholder="Weight" onChange={this.onChange} value={this.state.weight || ""} />
+                  <Form.Control type="number" name="weight" placeholder="Weight" onChange={this.onChange} value={this.state.weight || ""} required
+                    onInput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    maxLength="5"/>
                   <InputGroup.Append>
                     <InputGroup.Text id="inputGroupPrepend">lbs</InputGroup.Text>
                   </InputGroup.Append>
@@ -142,13 +179,17 @@ export default class AddWorkoutForm extends React.Component {
             <Col>
               <Form.Group>
                 <Form.Label>Sets</Form.Label>
-                <Form.Control type="number" name="sets" placeholder="Sets" onChange={this.onChange} value={this.state.sets || ""} />
+                <Form.Control type="number" name="sets" placeholder="Sets" onChange={this.onChange} value={this.state.sets || ""} required
+                  onInput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  maxLength="5" />
               </Form.Group>
             </Col>
             <Col>
               <Form.Group>
                 <Form.Label>Reps</Form.Label>
-                <Form.Control type="number" name="reps" placeholder="Reps" onChange={this.onChange} value={this.state.reps || ""} />
+                <Form.Control type="number" name="reps" placeholder="Reps" onChange={this.onChange} value={this.state.reps || ""} required
+                  onInput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  maxLength="5"/>
               </Form.Group>
             </Col>
             <Col>
@@ -160,8 +201,14 @@ export default class AddWorkoutForm extends React.Component {
               <Button variant="warning"
                 className="cancel-workout"
                 onClick={() => {
-                  this.setEditing(false);
-                  this.setState({ exercises: [] });
+                  this.setAdding(false);
+                  this.setState({
+                     exercises: [],
+                     name: "",
+                     weight: "",
+                     sets: "",
+                     reps: ""
+                   });
                 }}
               >
                 Cancel Workout

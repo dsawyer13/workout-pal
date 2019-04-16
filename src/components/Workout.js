@@ -1,10 +1,9 @@
 import React from "react";
-import Exercise from "./Exercise";
 import format from "date-fns/format";
 import { connect } from "react-redux";
-import { Button, Table } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
-import { deleteWorkout, addExercise, editExercise } from "../actions";
+import { deleteWorkout, addExercise  } from "../actions";
 
 export class Workout extends React.Component {
   constructor(props) {
