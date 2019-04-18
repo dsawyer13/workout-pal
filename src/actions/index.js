@@ -30,7 +30,11 @@ export const addWorkoutSuccess = workout => ({
 export const addWorkout = exercises => dispatch => {
   fetch(API_BASE_URL, {
     method: "post",
-    body: { exercises: exercises }
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ exercises: exercises })
   })
     .then(res => {
       if (!res.ok) {
@@ -40,6 +44,7 @@ export const addWorkout = exercises => dispatch => {
     })
     .then(workout => {
       dispatch(addWorkoutSuccess(workout));
+      dispatch(fetchWorkouts());
     });
 };
 

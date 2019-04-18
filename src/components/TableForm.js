@@ -8,6 +8,18 @@ export default class TableForm extends React.Component {
     super(props);
   }
 
+  onCancel = () => {
+    this.props.onCancel(false)
+  }
+
+  onChange = e => {
+    this.setState({ [e.currentTarget.name]: e.currentTarget.value })
+  }
+
+  onSelect = (optionSelected) => {
+    this.setState({name: optionSelected})
+  }
+
   render() {
     const formatGroupLabel = data => (
       <div>
@@ -24,7 +36,8 @@ export default class TableForm extends React.Component {
             placeholder="Exercise..."
             name="name"
             required
-            optionSelected={this.props.name}
+            value={{value: this.props.name, label: this.props.name}}
+            onChange={this.onChange}
           />
         </td>
         <td>
@@ -35,8 +48,7 @@ export default class TableForm extends React.Component {
               placeholder="Weight"
               value={this.props.weight || ""}
               required
-              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-              maxlength="5"
+              onChange={this.onChange}
             />
             <InputGroup.Append>
               <InputGroup.Text id="inputGroupPrepend">
@@ -52,8 +64,7 @@ export default class TableForm extends React.Component {
             placeholder="Sets"
             value={this.props.sets || ""}
             required
-            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-            maxlength="5"
+            onChange={this.onSelect}
           />
         </td>
         <td>
@@ -63,15 +74,14 @@ export default class TableForm extends React.Component {
             placeholder="Reps"
             value={this.props.reps || ""}
             required
-            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-            maxlength="5"
+            onChange={this.onChange}
           />
         </td>
         <td>
-            <Button variant="success" type="submit">
+            <Button variant="success">
               Update
             </Button>
-            <Button variant="warning" type="submit">
+            <Button variant="warning" onClick={this.onCancel}>
               Cancel
             </Button>
         </td>

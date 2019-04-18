@@ -19,10 +19,19 @@ import 'react-accessible-accordion/dist/fancy-example.css';
 import { addWorkout, deleteExercise, fetchWorkouts } from "../actions";
 
 export class HomePage extends React.Component {
-
   componentDidMount() {
-    this.props.dispatch(fetchWorkouts());
+    this.props.dispatch(fetchWorkouts())
   }
+
+  componentDidUpdate(prevProps){
+    if(this.props.workouts !== prevProps.workouts) {
+      let workouts = this.props.workouts
+      this.setState({
+        workouts
+      })
+    }
+  }
+
 
   addWorkout = exercises => {
     this.props.dispatch(addWorkout(exercises));
@@ -37,7 +46,8 @@ export class HomePage extends React.Component {
   }
 
   render() {
-    const workouts = this.props.workouts.map((workout, index) => (
+    const workouts = this.props.workouts.map((workout, index) => {
+      return(
       <AccordionItem key={index}>
         <AccordionItemHeading>
           <AccordionItemButton>
@@ -56,8 +66,8 @@ export class HomePage extends React.Component {
               </tr>
             </thead>
             <tbody>
-            {workout.exercises.map((exercise, index) => (
-              <tr className="exercise">
+            {workout.exercises && workout.exercises.map((exercise, index) => {
+              return(<tr key={index} className="exercise">
                 <td>{index+1}</td>
                 <Exercise key={index} {...exercise} />
                 <td>
@@ -65,13 +75,13 @@ export class HomePage extends React.Component {
                     Delete
                   </Button>
                 </td>
-              </tr>
-            ))}
+              </tr>)
+            })}
             </tbody>
           </Table>
         </AccordionItemPanel>
       </AccordionItem>
-    ));
+    )});
 
     return (
       <div className="homePage">
@@ -82,6 +92,10 @@ export class HomePage extends React.Component {
       </div>
     );
   }
+}
+
+HomePage.defaultProps = {
+  workouts: [],
 }
 
 const mapStateToProps = state => ({
