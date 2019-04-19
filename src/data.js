@@ -1,65 +1,65 @@
 export const shoulderOptions = [
-  { value: 'overheadPress', label: 'Overhead Press' },
-  { value: 'seatedDumbbellPress', label: 'Seated Dumbbell Press' },
-  { value: 'lateralRaise', label: 'Lateral Raise' },
-  { value: 'frontDumbbellRaise', label: 'Front Dumbbell Raise' },
-  { value: 'cableFacePull', label: 'Cable Face Pull' }
+  { value: 'Overhead Press', label: 'Overhead Press' },
+  { value: 'Seated Dumbbell Press', label: 'Seated Dumbbell Press' },
+  { value: 'Lateral Raise', label: 'Lateral Raise' },
+  { value: 'Front Dumbbell Raise', label: 'Front Dumbbell Raise' },
+  { value: 'Cable Face Pull', label: 'Cable Face Pull' }
 ];
 
 export const tricepsOptions = [
-  { value: 'cablePushDown', label: 'Cable Push Down' },
-  { value: 'skullCrusher', label: 'Skullcrusher' },
-  { value: 'closeGripBenchPress', label: 'Close Grip Bench Press' },
-  { value: 'dumbbellTricepsExtension', label: 'Dumbell Triceps Extension' },
-  { value: 'overheadCableExtension', label: 'Overhead Cable Extension' }
+  { value: 'Cable Push Down', label: 'Cable Push Down' },
+  { value: 'Skullcrusher', label: 'Skullcrusher' },
+  { value: 'Close Grip Bench Press', label: 'Close Grip Bench Press' },
+  { value: 'Dumbbell Triceps Extension', label: 'Dumbell Triceps Extension' },
+  { value: 'Overhead Cable Extension', label: 'Overhead Cable Extension' }
 ];
 
 export const bicepsOptions = [
-  { value: 'barbellCurl', label: 'Barbell Curl' },
-  { value: 'dumbbellCurl', label: 'Dumbell Curl' },
-  { value: 'hammerCurl', label: 'Hammer Curl' },
-  { value: 'reverseCurl', label: 'Reverse Curl' },
-  { value: 'preacherCurl', label: 'Preacher Curl' },
-  { value: 'cableCurl', label: 'Cable Curl' }
+  { value: 'Barbell Curl', label: 'Barbell Curl' },
+  { value: 'Dumbbell Curl', label: 'Dumbell Curl' },
+  { value: 'Hammer Curl', label: 'Hammer Curl' },
+  { value: 'Reverse Curl', label: 'Reverse Curl' },
+  { value: 'Preacher Curl', label: 'Preacher Curl' },
+  { value: 'Cable Curl', label: 'Cable Curl' }
 ];
 
 export const chestOptions = [
-  { value: 'benchPress', label: 'Bench Press' },
-  { value: 'dumbbellBenchPress', label: 'Dumbbell Bench Press' },
-  { value: 'inclineBenchPress', label: 'Incline Bench Press' },
-  { value: 'inclineDumbbellPress', label: 'Incline Dumbbell Press' },
-  { value: 'declineBenchPress', label: 'Decline Bench Press' },
-  { value: 'cableCrossover', label: 'Cabel Crossover' },
-  { value: 'dumbbellFly', label: 'Dumbbell Fly'}
+  { value: 'Bench Press', label: 'Bench Press' },
+  { value: 'Dumbbell Bench Press', label: 'Dumbbell Bench Press' },
+  { value: 'Incline Bench Press', label: 'Incline Bench Press' },
+  { value: 'Incline Dumbbell Press', label: 'Incline Dumbbell Press' },
+  { value: 'Decline Bench Press', label: 'Decline Bench Press' },
+  { value: 'Cable Crossover', label: 'Cabel Crossover' },
+  { value: 'Dumbbell Fly', label: 'Dumbbell Fly'}
 ];
 
 export const backOptions = [
-  { value: 'barbellRow', label: 'Barbell Row' },
-  { value: 'latPulldown', label: 'Lat Pulldown' },
-  { value: 'deadlift', label: 'Deadlift' },
-  { value: 'pullup', label: 'Pull Up' },
-  { value: 'tBarRow', label: 'T-Bar Row' },
-  { value: 'goodMorning', label: 'Good Morning' }
+  { value: 'Barbell Row', label: 'Barbell Row' },
+  { value: 'Lat Pulldown', label: 'Lat Pulldown' },
+  { value: 'Deadlift', label: 'Deadlift' },
+  { value: 'Pull Up', label: 'Pull Up' },
+  { value: 'T-Bar Row', label: 'T-Bar Row' },
+  { value: 'Good Morning', label: 'Good Morning' }
 ];
 
 export const legOptions = [
-  { value: 'squat', label: 'Squat' },
-  { value: 'frontSquat', label: 'Front Squat' },
+  { value: 'Squat', label: 'Squat' },
+  { value: 'Front Squat', label: 'Front Squat' },
   { value: 'Leg Press', label: 'Leg Press' },
-  { value: 'legCurl', label: 'Leg Curl' },
-  { value: 'legExtension', label: 'Leg Extension' },
-  { value: 'sldl', label: 'Stiff-Legged Deadlift' },
-  { value: 'gluteHamRaise', label: 'Glute-Ham Raise' },
-  { value: 'seatedCalfRaise', label: 'Seated Calf Raise' },
-  { value: 'standingCalfRaise', label: 'Standing Calf Raise' },
+  { value: 'Leg Curl', label: 'Leg Curl' },
+  { value: 'Leg Extension', label: 'Leg Extension' },
+  { value: 'Stiff-Legged Deadlift', label: 'Stiff-Legged Deadlift' },
+  { value: 'Glute-Ham Raise', label: 'Glute-Ham Raise' },
+  { value: 'Seated Calf Raise', label: 'Seated Calf Raise' },
+  { value: 'Standing Calf Raise', label: 'Standing Calf Raise' },
 ];
 
 export const absOptions = [
-  { value: 'crunch', label: 'Crunch' },
-  { value: 'crunchMachine', label: 'Crunch Machine' },
-  { value: 'plank', label: 'Plank' },
-  { value: 'cableCrunch', label: 'Cable Crunch' },
-  { value: 'abWheel', label: 'Hanging Leg Raise' }
+  { value: 'Crunch', label: 'Crunch' },
+  { value: 'Crunch Machine', label: 'Crunch Machine' },
+  { value: 'Plank', label: 'Plank' },
+  { value: 'Cable Crunch', label: 'Cable Crunch' },
+  { value: 'Hanging Leg Raise', label: 'Hanging Leg Raise' }
 ];
 
 export const groupedOptions = [

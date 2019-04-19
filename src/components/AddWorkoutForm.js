@@ -13,6 +13,7 @@ export default class AddWorkoutForm extends React.Component {
     this.state = {
       adding: false,
       exercises: [],
+      exerciseIndex: "",
       display: false,
       editing: false,
       name: "",
@@ -22,9 +23,10 @@ export default class AddWorkoutForm extends React.Component {
     };
   }
 
-  setEditing = editing => {
+  setEditing = (index) => {
     this.setState({
-      editing
+      exerciseIndex: index,
+      editing: !this.state.editing
     });
   }
 
@@ -35,7 +37,6 @@ export default class AddWorkoutForm extends React.Component {
     });
   }
 
-
   displayHead = () => {
     this.setState({display: true});
   }
@@ -45,7 +46,7 @@ export default class AddWorkoutForm extends React.Component {
   }
 
   onSelect = (optionSelected) => {
-    this.setState({name: optionSelected.label})
+    this.setState({name: optionSelected.value})
   }
 
   addWorkout = e => {
@@ -73,6 +74,20 @@ export default class AddWorkoutForm extends React.Component {
     this.setState({ name: "", weight: "", sets: "", reps: "" });
   }
 
+  editExercise = (editedExercise, index) => {
+    console.log("hi")
+    let exercises = [...this.state.exercises];
+    console.log(exercises)
+    let exercise = {...exercises[index]}
+    console.log(exercise)
+    exercises[index] = editedExercise
+    this.setState({
+      exercises,
+      editing: !this.state.editing,
+      exerciseIndex:""
+    })
+  }
+
   deleteExercise = index => {
     const exercises = this.state.exercises;
     exercises.splice(index, 1);
@@ -89,30 +104,33 @@ export default class AddWorkoutForm extends React.Component {
     const exercises = this.state.exercises.map((exercise, index) => {
       return (
         <>
-        {!this.state.editing ? (
+        {this.state.editing && this.state.exerciseIndex === index ? (
           <tr key={index}>
+            <td>{index+1}</td>
+            <TableForm
+              index={index}
+              name={this.state.exercises[index].name}
+              weight={this.state.exercises[index].weight}
+              sets={this.state.exercises[index].sets}
+              reps={this.state.exercises[index].reps}
+              onClick={() => {this.setEditing(false)}}
+              onAdd={(editedExercise) => {this.editExercise(editedExercise, index)}}
+            />
+          </tr>
+            ) : (
+            <tr key={index}>
             <td>{index+1}</td>
             <Exercise  key={index} {...exercise} />
             <td>
-            <Button variant="warning" onClick={this.setEditing(true)}>
+            <Button variant="warning" onClick={() => this.setEditing(index)}>
               Edit
             </Button>
             <Button variant="danger" onClick={index => this.deleteExercise(index)}>
               Delete
             </Button>
             </td>
-          </tr>) : (
-            <tr>
-              <td>{index+1}</td>
-              <TableForm
-                index={index}
-                name={this.state.exercises[index].name}
-                weight={this.state.exercises[index].weight}
-                sets={this.state.exercises[index].sets}
-                reps={this.state.exercises[index].reps}
-                onAdd={this.setEditing(false)}
-              />
-            </tr>
+          </tr>
+
           )}
           </>
           )
@@ -148,7 +166,7 @@ export default class AddWorkoutForm extends React.Component {
 
     return (
       <div className="new-workout-section">
-        <Table striped bordered hover responsive>
+        <Table striped bordered hover>
           {head}
           <tbody>
             {exercises}

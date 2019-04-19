@@ -19,26 +19,13 @@ import 'react-accessible-accordion/dist/fancy-example.css';
 import { addWorkout, deleteExercise, fetchWorkouts } from "../actions";
 
 export class HomePage extends React.Component {
+
   componentDidMount() {
     this.props.dispatch(fetchWorkouts())
   }
 
-  componentDidUpdate(prevProps){
-    if(this.props.workouts !== prevProps.workouts) {
-      let workouts = this.props.workouts
-      this.setState({
-        workouts
-      })
-    }
-  }
-
-
   addWorkout = exercises => {
     this.props.dispatch(addWorkout(exercises));
-  }
-
-  editExercise = () => {
-    this.setState({display: true})
   }
 
   deleteExercise = id => {

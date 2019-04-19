@@ -6,18 +6,9 @@ import { deleteWorkout, addExercise  } from "../actions";
 
 export class Workout extends React.Component {
 
-  // componentDidMount() {
-  //     this.props.dispatch(fetchWorkouts());
-  // }
-  //
-
   deleteWorkout = e => {
     this.props.dispatch(deleteWorkout(this.props.id));
   };
-  //
-  // addExercise(id, exercise) {
-  //   this.props.dispatch(addExercise(this.props.id, this.state));
-  // }
 
   render() {
     console.log()
