@@ -2,7 +2,7 @@ import React from "react";
 import format from "date-fns/format";
 import { connect } from "react-redux";
 import { Button } from "react-bootstrap";
-import { deleteWorkout, addExercise  } from "../actions";
+import { deleteWorkout } from "../actions";
 
 export class Workout extends React.Component {
 
@@ -11,11 +11,8 @@ export class Workout extends React.Component {
   };
 
   render() {
-    console.log()
     let exerciseNum = this.props.exercises.length;
     let date = format(new Date(this.props.date), "MM/DD/YYYY");
-    console.log(exerciseNum)
-    console.log(date)
     function sumArray(arr, field) {
       let sum = 0;
       for (let i = 0; i<arr.length; i++) {

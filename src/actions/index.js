@@ -31,8 +31,8 @@ export const addWorkout = exercises => dispatch => {
   fetch(API_BASE_URL, {
     method: "post",
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      Accept: "application/json",
+      "Content-Type": "application/json"
     },
     body: JSON.stringify({ exercises: exercises })
   })
@@ -87,6 +87,22 @@ export const deleteWorkout = id => dispatch => {
 export const deleteExercise = id => dispatch => {
   fetch(`${API_BASE_URL}/exercise/${id}`, {
     method: "delete"
+  }).then(res => {
+    if (res.ok) {
+      dispatch(fetchWorkouts());
+    }
+  });
+};
+
+export const editExercise = (exercise, wID, eID) => dispatch => {
+  console.log(exercise, wID, eID);
+  fetch(`${API_BASE_URL}/${wID}/${eID}`, {
+    method: "put",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(exercise)
   }).then(res => {
     if (res.ok) {
       dispatch(fetchWorkouts());

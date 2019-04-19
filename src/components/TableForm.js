@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Col, Row, Button, InputGroup } from "react-bootstrap";
+import { Form, Button, InputGroup } from "react-bootstrap";
 import Select from "react-select";
 import { groupedOptions } from "../data.js";
 
@@ -28,13 +28,11 @@ export default class TableForm extends React.Component {
 
   onSubmit = () => {
     if (this.state && this.props.onAdd) {
-      console.log("hi")
       this.props.onAdd(this.state)
     }
   };
 
   render() {
-    console.log(this.state)
     const formatGroupLabel = data => (
       <div>
         <span>{data.label}</span>
