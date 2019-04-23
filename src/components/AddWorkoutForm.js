@@ -1,9 +1,10 @@
 import React from "react";
 import Exercise from "./Exercise.js";
 import TableForm from "./TableForm.js";
-import { Form, Col, Row, Button, InputGroup, Table } from "react-bootstrap";
 import Select from "react-select";
 import { groupedOptions } from "../data.js";
+import './css/buttons.css';
+import './css/table-and-form.css';
 
 export default class AddWorkoutForm extends React.Component {
   constructor(props) {
@@ -35,7 +36,9 @@ export default class AddWorkoutForm extends React.Component {
   };
 
   displayHead = () => {
-    this.setState({ display: true });
+    if(this.state.name !=="" && this.state.weight !=="" && this.state.reps !=="" && this.state.sets !=="") {
+      this.setState({ display: true });
+    }
   };
 
   onChange = e => {
@@ -48,11 +51,13 @@ export default class AddWorkoutForm extends React.Component {
 
   addWorkout = e => {
     e.preventDefault();
-    if (this.state.exercises && this.props.onAdd) {
+    if (this.state.exercises.length>1 && this.props.onAdd) {
       console.log(this.state.exercises);
       this.props.onAdd(this.state.exercises);
     }
-    this.setState({ exercises: [] });
+    this.setState({
+       exercises: [],
+     });
   };
 
   addExercise = e => {
@@ -101,6 +106,7 @@ export default class AddWorkoutForm extends React.Component {
             <tr key={index}>
               <td>{index + 1}</td>
               <TableForm
+                auto
                 index={index}
                 name={this.state.exercises[index].name}
                 weight={this.state.exercises[index].weight}
@@ -116,19 +122,19 @@ export default class AddWorkoutForm extends React.Component {
             <tr key={index}>
               <td>{index + 1}</td>
               <Exercise key={index} {...exercise} />
-              <td>
-                <Button
-                  variant="warning"
+              <td  className="action-buttons">
+                <button
+                  className="button warning"
                   onClick={() => this.setEditing(index)}
                 >
                   Edit
-                </Button>
-                <Button
-                  variant="danger"
+                </button>
+                <button
+                  className="button danger"
                   onClick={index => this.deleteExercise(index)}
                 >
                   Delete
-                </Button>
+                </button>
               </td>
             </tr>
           )}
@@ -139,12 +145,11 @@ export default class AddWorkoutForm extends React.Component {
     if (!this.state.adding) {
       return (
         <div
-          className="add-workout"
           onClick={() => {
             this.setAdding(true);
           }}
         >
-          <Button variant="success">+ New Workout</Button>
+          <button className="add-workout"><span className="plus-color">+</span> New Workout</button>
         </div>
       );
     }
@@ -159,7 +164,7 @@ export default class AddWorkoutForm extends React.Component {
             <th>Weight</th>
             <th>Sets</th>
             <th>Reps</th>
-            <th>Action</th>
+            <th className="hide">Action</th>
           </tr>
         </thead>
       );
@@ -167,15 +172,16 @@ export default class AddWorkoutForm extends React.Component {
 
     return (
       <div className="new-workout-section">
-        <Table striped bordered hover>
+        <h1 className="new-header">Today's Workout</h1>
+        <table className="table today">
           {head}
           <tbody>{exercises}</tbody>
-        </Table>
-        <Form onSubmit={this.addExercise}>
-          <Row>
-            <Col>
-              <Form.Group>
-                <Form.Label>Exercise</Form.Label>
+        </table>
+        <form onSubmit={this.addExercise}>
+          <div className="row">
+            <div className="select-col">
+              <div className="form-group">
+                <label className="form-label">Exercise</label>
                 <Select
                   options={groupedOptions}
                   formatGroupLabel={formatGroupLabel}
@@ -184,93 +190,94 @@ export default class AddWorkoutForm extends React.Component {
                   onChange={this.onSelect}
                   required
                 />
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group>
-                <Form.Label>Weight</Form.Label>
-                <InputGroup>
-                  <Form.Control
+              </div>
+            </div>
+            <div className="col">
+              <div className="form-group">
+                <label className="form-label">Weight</label>
+                <div class="input-group">
+                  <input className="form-control"
                     type="number"
+                    min="0"
                     name="weight"
                     placeholder="Weight"
                     onChange={this.onChange}
                     value={this.state.weight || ""}
-                    required
-                  />
-                  <InputGroup.Append>
-                    <InputGroup.Text id="inputGroupPrepend">
+                    required />
+                  <div class="input-group-append">
+                    <span class="input-group-text">
                       lbs
-                    </InputGroup.Text>
-                  </InputGroup.Append>
-                </InputGroup>
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group>
-                <Form.Label>Sets</Form.Label>
-                <Form.Control
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col sets-reps">
+              <div className="form-group">
+                <label className="form-label">Sets</label>
+                <input className="form-control"
                   type="number"
+                  min="0"
                   name="sets"
                   placeholder="Sets"
                   onChange={this.onChange}
                   value={this.state.sets || ""}
                   required
                 />
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group>
-                <Form.Label>Reps</Form.Label>
-                <Form.Control
+              </div>
+            </div>
+            <div className="col sets-reps">
+              <div className="form-group">
+                <label className="form-label">Reps</label>
+                <input className="form-control"
                   type="number"
+                  min="0"
                   name="reps"
                   placeholder="Reps"
                   onChange={this.onChange}
                   value={this.state.reps || ""}
                   required
                 />
-              </Form.Group>
-            </Col>
-            <Col>
-              <Button
-                variant="primary"
-                type="submit"
-                onClick={this.displayHead}
-              >
-                Add Exercise
-              </Button>
-            </Col>
-            <Col>
-              <Button
-                variant="warning"
-                className="cancel-workout"
-                onClick={() => {
-                  this.setAdding(false);
-                  this.setState({
-                    exercises: [],
-                    name: "",
-                    weight: "",
-                    sets: "",
-                    reps: ""
-                  });
-                }}
-              >
-                Cancel Workout
-              </Button>
-            </Col>
-          </Row>
-          <Row>
-            <Button
-              variant="primary"
-              size="lg"
-              block
+              </div>
+            </div>
+
+              <div className="col button1 button-row">
+                <button
+                  className="button primary"
+                  type="submit"
+                  onClick={this.displayHead}
+                >
+                  Add<span className="hide-text"> Exercise</span>
+                </button>
+              </div>
+              <div className="col button2 button-row">
+                <button
+                  className="button warning"
+                  onClick={() => {
+                    this.setAdding(false);
+                    this.setState({
+                      exercises: [],
+                      name: "",
+                      weight: "",
+                      sets: "",
+                      reps: ""
+                    });
+                  }}
+                >
+                  Cancel<span className="hide-text"> Workout</span>
+                </button>
+              </div>
+
+          </div>
+          <div className="row">
+            <button
+              className="finishWorkout"
               onClick={e => this.addWorkout(e)}
             >
               Finish Workout
-            </Button>
-          </Row>
-        </Form>
+            </button>
+          </div>
+        </form>
       </div>
     );
   }

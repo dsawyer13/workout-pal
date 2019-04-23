@@ -1,0 +1,48 @@
+.workout button {
+  float: right;
+}
+
+.workout {
+  display: inline;
+  font-size: 24px;
+  font-weight: bold;
+  position: relative;
+}
+
+.date {
+  padding-right: 40px;
+  padding-left: 15px;
+}
+
+.workout .exercises, .workout .sets, .workout .reps {
+  font-size: 30px;
+  padding-right: 40px;
+
+}
+
+.plain {
+  font-weight: normal;
+  font-size: 24px;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 480px) {
+  .workout .exercises, .workout .sets, .workout .reps {
+    display: none;
+  }
+  .workout {
+    font-size: 20px;
+  }
+
+}
+
+@media (min-width: 480px) and (max-width: 1024px) {
+  .workout .exercises, .workout .sets, .workout .reps {
+    font-size: 24px;
+    padding-right: 20px;
+  }
+  .date {
+    padding-right: 10px;
+    padding-left: 5px;
+  }
+
+}

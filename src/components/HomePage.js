@@ -3,8 +3,6 @@ import Workout from "./Workout";
 import Exercise from "./Exercise";
 import AddWorkoutForm from "./AddWorkoutForm";
 import TableForm from "./TableForm";
-import Stats from "./Stats";
-import { Table, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import {
   Accordion,
@@ -14,8 +12,9 @@ import {
   AccordionItemPanel
 } from "react-accessible-accordion";
 
-import "./home-page.css";
-import "react-accessible-accordion/dist/fancy-example.css";
+import "./css/home-page.css";
+import "./css/buttons.css";
+import "./css/table-and-form.css";
 
 import { addWorkout, deleteExercise, editExercise, fetchWorkouts } from "../actions";
 
@@ -62,7 +61,6 @@ export class HomePage extends React.Component {
       exerciseIndex: ""
     })
   }
-
   deleteExercise = id => {
     this.props.dispatch(deleteExercise(id));
   };
@@ -77,7 +75,7 @@ export class HomePage extends React.Component {
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
-              <Table>
+              <table className="table">
                 <thead>
                   <tr>
                     <th>#</th>
@@ -85,7 +83,7 @@ export class HomePage extends React.Component {
                     <th>Weight</th>
                     <th>Sets</th>
                     <th>Reps</th>
-                    <th>Action</th>
+                    <th className="hide">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -113,21 +111,25 @@ export class HomePage extends React.Component {
                             <tr key={index2}>
                               <td>{index2 + 1}</td>
                               <Exercise key={index2} {...exercise} />
-                              <td>
-                                <Button
-                                  variant="warning"
-                                  onClick={() => this.setEditing(index2)}
-                                >
-                                  Edit
-                                </Button>
-                                <Button
-                                  variant="danger"
-                                  onClick={id =>
-                                    this.deleteExercise(exercise._id)
-                                  }
-                                >
-                                  Delete
-                                </Button>
+                              <td className="button-td">
+                                <span className="edit-button">
+                                  <button
+                                    className="button warning"
+                                    onClick={() => this.setEditing(index2)}
+                                  >
+                                    Edit
+                                  </button>
+                                  </span>
+                                <span className="delete-button">
+                                  <button
+                                    className="button danger"
+                                    onClick={id =>
+                                      this.deleteExercise(exercise._id)
+                                    }
+                                  >
+                                    Delete
+                                  </button>
+                                </span>
                               </td>
                             </tr>
                           )}
@@ -135,19 +137,20 @@ export class HomePage extends React.Component {
                       );
                     })}
                 </tbody>
-              </Table>
+              </table>
             </AccordionItemPanel>
           </AccordionItem>
       );
     });
 
     return (
-      <div className="homePage">
-        <h2>Workout Log</h2>
-        <Accordion allowZeroExpanded={true}>{workouts}</Accordion>
-        <AddWorkoutForm onAdd={exercises => this.addWorkout(exercises)} />
-        <Stats />
-      </div>
+      <body className="homeBackground">
+        <div className="homePage">
+          <h1 className="previous">Previous Workouts</h1>
+          <Accordion allowZeroExpanded={true}>{workouts}</Accordion>
+          <AddWorkoutForm onAdd={exercises => this.addWorkout(exercises)} />
+        </div>
+      </body>
     );
   }
 }

@@ -1,8 +1,10 @@
 import React from "react";
 import format from "date-fns/format";
 import { connect } from "react-redux";
-import { Button } from "react-bootstrap";
 import { deleteWorkout } from "../actions";
+import './css/buttons.css';
+import './css/workout.css'
+
 
 export class Workout extends React.Component {
 
@@ -15,7 +17,7 @@ export class Workout extends React.Component {
     let date = format(new Date(this.props.date), "MM/DD/YYYY");
     function sumArray(arr, field) {
       let sum = 0;
-      for (let i = 0; i<arr.length; i++) {
+      for (let i = 0; i < arr.length; i++) {
         sum += arr[i][field];
       }
       return sum;
@@ -24,15 +26,15 @@ export class Workout extends React.Component {
     let repsNum = sumArray(this.props.exercises, 'reps');
 
     return (
-      <>
+      <div className="workout">
         <span className="date">{date} </span>
-        <span className="exerciseNum">{exerciseNum} exercises </span>
-        <span className="setsNum">{setsNum} total sets </span>
-        <span className="repsNum">{repsNum} total reps </span>
-        <Button variant="danger" onClick={this.deleteWorkout}>
+        <span className="exercises">{exerciseNum}<span className="plain"> exercises </span></span>
+        <span className="sets">{setsNum}<span className="plain"> sets </span></span>
+        <span className="reps">{repsNum}<span className="plain"> reps </span></span>
+        <button className="button danger workout" onClick={this.deleteWorkout}>
           Delete
-        </Button>
-      </>
+        </button>
+      </div>
     );
   }
 }

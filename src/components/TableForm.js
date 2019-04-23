@@ -1,7 +1,8 @@
 import React from "react";
-import { Form, Button, InputGroup } from "react-bootstrap";
 import Select from "react-select";
 import { groupedOptions } from "../data.js";
+import './css/buttons.css'
+import './css/table-and-form.css';
 
 export default class TableForm extends React.Component {
   constructor(props) {
@@ -41,7 +42,7 @@ export default class TableForm extends React.Component {
 
     return (
       <>
-        <td style={{width:"20%"}}>
+        <td>
           <Select
             options={groupedOptions}
             formatGroupLabel={formatGroupLabel}
@@ -50,25 +51,30 @@ export default class TableForm extends React.Component {
             required
             value={{ value: this.state.name, label: this.state.name }}
             onChange={this.onSelect}
+            className="select"
           />
         </td>
-        <td style={{width:"15%"}}>
-          <InputGroup>
-            <Form.Control
-              type="number"
-              name="weight"
-              placeholder="Weight"
-              value={this.state.weight || ""}
-              required
-              onChange={this.onChange}
-            />
-            <InputGroup.Append>
-              <InputGroup.Text id="inputGroupPrepend">lbs</InputGroup.Text>
-            </InputGroup.Append>
-          </InputGroup>
+        <td>
+          <div className="form-group">
+            <div className="input-group">
+              <input className="form-control weight"
+                type="number"
+                name="weight"
+                placeholder="Weight"
+                value={this.state.weight || ""}
+                required
+                onChange={this.onChange}
+              />
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  lbs
+                </span>
+              </div>
+            </div>
+          </div>
         </td>
-        <td style={{width:"15%"}}>
-          <Form.Control
+        <td>
+          <input className="form-control sets"
             type="number"
             name="sets"
             placeholder="Sets"
@@ -77,8 +83,8 @@ export default class TableForm extends React.Component {
             onChange={this.onChange}
           />
         </td>
-        <td style={{width:"15%"}}>
-          <Form.Control
+        <td>
+          <input className="form-control reps"
             type="number"
             name="reps"
             placeholder="Reps"
@@ -88,12 +94,16 @@ export default class TableForm extends React.Component {
           />
         </td>
         <td>
-          <Button variant="success" onClick={() => this.onSubmit()}>
-            Update
-          </Button>
-          <Button variant="warning" onClick={() => this.onCancel()}>
-            Cancel
-          </Button>
+          <div className="edit-button">
+            <button className="button success" onClick={() => this.onSubmit()}>
+              Update
+            </button>
+          </div>
+          <div className="delete-button">
+            <button className="button warning" onClick={() => this.onCancel()}>
+              Cancel
+            </button>
+          </div>
         </td>
       </>
     );
