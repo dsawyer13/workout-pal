@@ -18,10 +18,10 @@ ReactDom.render(
                 <h1 className="logo"><Link to ='/'><span className="title1">Workout</span><span className="title2">Pal</span></Link></h1>
               </header>
             </nav>
-            <main>
+            <>
               <Route exact path='/' component={LandingPage} />
               <Route exact path='/home' component={HomePage} />
-            </main>
+            </>
           </>
         </Switch>
       </Router>

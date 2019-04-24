@@ -144,13 +144,15 @@ export class HomePage extends React.Component {
     });
 
     return (
-      <body className="homeBackground">
-        <div className="homePage">
-          <h1 className="previous">Previous Workouts</h1>
-          <Accordion allowZeroExpanded={true}>{workouts}</Accordion>
-          <AddWorkoutForm onAdd={exercises => this.addWorkout(exercises)} />
+      <>
+        <div className="homeBackground">
+          <div className="homePage">
+            <h1 className="previous">Previous Workouts</h1>
+            <Accordion allowZeroExpanded={true}>{workouts}</Accordion>
+            <AddWorkoutForm onAdd={exercises => this.addWorkout(exercises)} />
+          </div>
         </div>
-      </body>
+      </>
     );
   }
 }

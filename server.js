@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path');
 
 const {PORT, DATABASE_URL, CLIENT_ORIGIN} = require('./config');
 
@@ -11,6 +12,9 @@ const {router: workoutsRouter} = require('./workouts/router');
 mongoose.Promise = global.Promise;
 
 const app = express();
+
+app.use(express.static(path.join(__dirname, 'client')))
+
 app.use(bodyParser.json());
 app.use(cors({
   origin: CLIENT_ORIGIN
