@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,400i,700i,700|Roboto|Ubuntu:400,700');
+
+
+body {
+  /* min-height: 100%; */
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+}
+
+.title1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  color: 	#EEEEEF;
+}
+
+.title2 {
+  font-weight: 700;
+  font-style: italic;
+  color: #F36A23;
+}
+
+h1 > a {
+  text-decoration: none;
+  color: 	#EEEEEF;
+}
+
+.logo {
+  font-size: 40px;
+  padding-top: 7px;
+  color: 	#202020;
+  text-shadow: 2px 2px #1B2121;
+}
+
+
+.navBar {
+  background-color: #212121;
+  text-align: left;
+  padding-left: 50px;
+  height: 75px;
+  font-size: 24px;
+  postion: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+button:focus, input[type="button"]:focus {
+    outline: none;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 480px) {
+  html {
+    min-width: 100vw;
+    min-height: 100vh;
+  }
+
+  .navBar {
+    padding: 0;
+    text-align: center;
+  }
+}
