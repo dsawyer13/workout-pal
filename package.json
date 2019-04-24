@@ -2,7 +2,14 @@
   "name": "workout-pal",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8080",
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:8080",
+      "pathRewrite": {
+        "^/api": "/"
+      }
+    }
+  }
   "dependencies": {
     "body-parser": "^1.18.3",
     "bootstrap": "^4.3.1",
@@ -13,6 +20,7 @@
     "enzyme-adapter-react-16": "^1.12.1",
     "express": "^4.16.4",
     "fetch-mock": "^7.3.3",
+    "http-proxy-middleware": "^0.19.1",
     "mocha": "^6.0.2",
     "mongoose": "^5.4.20",
     "react": "^16.8.6",
