@@ -1,8 +1,8 @@
 import React from "react";
 import Select from "react-select";
 import { groupedOptions } from "../data.js";
-import './css/buttons.css'
-import './css/table-and-form.css';
+import "./css/buttons.css";
+import "./css/table-and-form.css";
 
 export default class TableForm extends React.Component {
   constructor(props) {
@@ -29,7 +29,7 @@ export default class TableForm extends React.Component {
 
   onSubmit = () => {
     if (this.state && this.props.onAdd) {
-      this.props.onAdd(this.state)
+      this.props.onAdd(this.state);
     }
   };
 
@@ -57,7 +57,8 @@ export default class TableForm extends React.Component {
         <td>
           <div className="form-group">
             <div className="input-group">
-              <input className="form-control weight"
+              <input
+                className="form-control weight"
                 type="number"
                 name="weight"
                 placeholder="Weight"
@@ -66,15 +67,14 @@ export default class TableForm extends React.Component {
                 onChange={this.onChange}
               />
               <div class="input-group-append">
-                <span class="input-group-text">
-                  lbs
-                </span>
+                <span class="input-group-text">lbs</span>
               </div>
             </div>
           </div>
         </td>
         <td>
-          <input className="form-control sets"
+          <input
+            className="form-control sets"
             type="number"
             name="sets"
             placeholder="Sets"
@@ -84,7 +84,8 @@ export default class TableForm extends React.Component {
           />
         </td>
         <td>
-          <input className="form-control reps"
+          <input
+            className="form-control reps"
             type="number"
             name="reps"
             placeholder="Reps"

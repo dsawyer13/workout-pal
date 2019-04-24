@@ -3,8 +3,8 @@ import Exercise from "./Exercise.js";
 import TableForm from "./TableForm.js";
 import Select from "react-select";
 import { groupedOptions } from "../data.js";
-import './css/buttons.css';
-import './css/table-and-form.css';
+import "./css/buttons.css";
+import "./css/table-and-form.css";
 
 export default class AddWorkoutForm extends React.Component {
   constructor(props) {
@@ -36,7 +36,12 @@ export default class AddWorkoutForm extends React.Component {
   };
 
   displayHead = () => {
-    if(this.state.name !=="" && this.state.weight !=="" && this.state.reps !=="" && this.state.sets !=="") {
+    if (
+      this.state.name !== "" &&
+      this.state.weight !== "" &&
+      this.state.reps !== "" &&
+      this.state.sets !== ""
+    ) {
       this.setState({ display: true });
     }
   };
@@ -51,13 +56,13 @@ export default class AddWorkoutForm extends React.Component {
 
   addWorkout = e => {
     e.preventDefault();
-    if (this.state.exercises.length>1 && this.props.onAdd) {
+    if (this.state.exercises.length > 1 && this.props.onAdd) {
       console.log(this.state.exercises);
       this.props.onAdd(this.state.exercises);
     }
     this.setState({
-       exercises: [],
-     });
+      exercises: []
+    });
   };
 
   addExercise = e => {
@@ -122,7 +127,7 @@ export default class AddWorkoutForm extends React.Component {
             <tr key={index}>
               <td>{index + 1}</td>
               <Exercise key={index} {...exercise} />
-              <td  className="action-buttons">
+              <td className="action-buttons">
                 <button
                   className="button warning"
                   onClick={() => this.setEditing(index)}
@@ -149,7 +154,9 @@ export default class AddWorkoutForm extends React.Component {
             this.setAdding(true);
           }}
         >
-          <button className="add-workout"><span className="plus-color">+</span> New Workout</button>
+          <button className="add-workout">
+            <span className="plus-color">+</span> New Workout
+          </button>
         </div>
       );
     }
@@ -196,18 +203,18 @@ export default class AddWorkoutForm extends React.Component {
               <div className="form-group">
                 <label className="form-label">Weight</label>
                 <div class="input-group">
-                  <input className="form-control"
+                  <input
+                    className="form-control"
                     type="number"
                     min="0"
                     name="weight"
                     placeholder="Weight"
                     onChange={this.onChange}
                     value={this.state.weight || ""}
-                    required />
+                    required
+                  />
                   <div class="input-group-append">
-                    <span class="input-group-text">
-                      lbs
-                    </span>
+                    <span class="input-group-text">lbs</span>
                   </div>
                 </div>
               </div>
@@ -215,7 +222,8 @@ export default class AddWorkoutForm extends React.Component {
             <div className="col sets-reps">
               <div className="form-group">
                 <label className="form-label">Sets</label>
-                <input className="form-control"
+                <input
+                  className="form-control"
                   type="number"
                   min="0"
                   name="sets"
@@ -229,7 +237,8 @@ export default class AddWorkoutForm extends React.Component {
             <div className="col sets-reps">
               <div className="form-group">
                 <label className="form-label">Reps</label>
-                <input className="form-control"
+                <input
+                  className="form-control"
                   type="number"
                   min="0"
                   name="reps"
@@ -241,39 +250,35 @@ export default class AddWorkoutForm extends React.Component {
               </div>
             </div>
 
-              <div className="col button1 button-row">
-                <button
-                  className="button primary"
-                  type="submit"
-                  onClick={this.displayHead}
-                >
-                  Add<span className="hide-text"> Exercise</span>
-                </button>
-              </div>
-              <div className="col button2 button-row">
-                <button
-                  className="button warning"
-                  onClick={() => {
-                    this.setAdding(false);
-                    this.setState({
-                      exercises: [],
-                      name: "",
-                      weight: "",
-                      sets: "",
-                      reps: ""
-                    });
-                  }}
-                >
-                  Cancel<span className="hide-text"> Workout</span>
-                </button>
-              </div>
-
+            <div className="col button1 button-row">
+              <button
+                className="button primary"
+                type="submit"
+                onClick={this.displayHead}
+              >
+                Add<span className="hide-text"> Exercise</span>
+              </button>
+            </div>
+            <div className="col button2 button-row">
+              <button
+                className="button warning"
+                onClick={() => {
+                  this.setAdding(false);
+                  this.setState({
+                    exercises: [],
+                    name: "",
+                    weight: "",
+                    sets: "",
+                    reps: ""
+                  });
+                }}
+              >
+                Cancel<span className="hide-text"> Workout</span>
+              </button>
+            </div>
           </div>
           <div className="row">
-            <button
-              className="finishWorkout"
-              onClick={e => this.addWorkout(e)}
-            >
+            <button className="finishWorkout" onClick={e => this.addWorkout(e)}>
               Finish Workout
             </button>
           </div>

@@ -1,23 +1,23 @@
-import * as actions from '../actions';
-export
-
-const initialState = {
+import * as actions from "../actions";
+export const initialState = {
   workouts: []
 };
 
-export const workoutPalReducer = (state=initialState, action) => {
+export const workoutPalReducer = (state = initialState, action) => {
   if (action.type === actions.ADD_WORKOUT_SUCCESS) {
     return Object.assign({}, state, {
-      workouts: [...state.workouts, {
-        id: action.id,
-        date: action.date,
-        finished: action.finished,
-        exercises: action.exercises
-      }]
+      workouts: [
+        ...state.workouts,
+        {
+          id: action.id,
+          date: action.date,
+          finished: action.finished,
+          exercises: action.exercises
+        }
+      ]
     });
+  } else if (action.type === actions.FETCH_WORKOUTS_SUCCESS) {
+    return action.workouts;
   }
-    else if (action.type === actions.FETCH_WORKOUTS_SUCCESS) {
-      return action.workouts;
-    }
-    return state;
+  return state;
 };
