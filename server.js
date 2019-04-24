@@ -6,6 +6,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
 
+
+//add mongodburi?
 const { PORT, DATABASE_URL, CLIENT_ORIGIN } = require("./config");
 
 const { router: workoutsRouter } = require("./workouts/router");
@@ -26,6 +28,8 @@ app.use("/workouts", workoutsRouter);
 app.use("*", (req, res) => {
   return res.status(404).json({ message: "Not Found" });
 });
+
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/workoutPalDev')
 
 // let server;
 //

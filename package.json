@@ -2,10 +2,11 @@
   "name": "fit-tracker-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "mocha",
-    "start": "node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -22,5 +23,8 @@
     "react": "^16.8.6",
     "react-redux": "^7.0.1",
     "redux": "^4.0.1"
+  },
+  "engines": {
+    "node": "11.6.0"
   }
 }
