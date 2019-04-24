@@ -4,7 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const path = require('path');
+
 
 const {PORT, DATABASE_URL, CLIENT_ORIGIN} = require('./config');
 
@@ -13,11 +13,6 @@ mongoose.Promise = global.Promise;
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'client/build')));
-app.use(express.static(__dirname));
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'))
-})
 
 app.use(bodyParser.json());
 app.use(cors({
