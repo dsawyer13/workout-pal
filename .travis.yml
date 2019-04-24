@@ -5,8 +5,7 @@ cache:
   - node_modules
 deploy:
   provider: heroku
-  api_key:
-    secure: joKdr6DfRimbii5rqj1lixG7ZmI6aLeM/+hwxXzIXOGkXtrA6lsCbGH+VAm2kdZ+7dkgOf7qOpvn+t+aDiSbvboOihqIr7XBUSXPcnaKDYI4OeHbt1PEoCJ9Jr3Luuq6YWTWWcDdPCXAiw5x5lZ8hjvOmElYx7InnwH3xr0q111Zg+2149CwSD/Dzn09HoeUSLwD5s+JZ7Hp0t99IHrfjLLXDd2IIOhr7ML4J5yQo/chDvot2jw0/0A3He9CdkZdQjvO843Tb2QAuXs6N4Eag9Nw6c7aUU9diF3ASTPEAtmr94W25RdC69vb7E7M8CiPEtUF9K6mUUIQFiXntlJbM8zblzSutPraO6EsD1GzhyMWG5PDbMzbDdWElNFxe2IdnmTYpjmf9Ykvm78M8s2IeUpFaPJpoxZTM/4i2pIvEO7+AaT/jXehVbFAWxdkHObvXOGEguUhIzNZUmh0rmPcey2fcO9YVmISwnbKsfmWg9LstkS0HGFk2/9MDzraVKz1kXPPhRFZ0eRyrxQFDguEABptq5gJL3Ie85SPwSZPHPMFkhr9EXgsikLxr1EZNGYQsLASHi4kpRiJJQYWfKoAVD+EMOHY9tX19I1YeSfG6uGb2ikfSsxTSYryGSuH1mdKni78SI5feBmlrTfxiUs+Q6GDfu6m628mwMl3V430Qeo=
+  api_key: 53e73846-387b-4032-a732-fa353916c275
   app: fit-tracker
   on:
     repo: dsawyer13/fit-tracker
