@@ -23,10 +23,4 @@ describe('<HomePage />', () => {
     shallow(<HomePage />);
   });
 
-  it('Can add workout to the database', () => {
-    const wrapper = shallow(<HomePage />);
-    const instance = wrapper.instance();
-    instance.addWorkout(exercises);
-    expect(wrapper.state('workouts').length).toEqual(exercises.length);
-  })
 });
