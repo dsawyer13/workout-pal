@@ -1,14 +1,19 @@
 language: node_js
 node_js: node
 cache:
-   directories:
-     - node_modules
-services:
-- mongodb
+  directories:
+  - node_modules
+install:
+  - npm install
+script:
+  - npm start
+  - npm test
+env:
+- CI=true
 deploy:
   provider: heroku
   api_key:
-    secure: lf/30gEIzzZzMwcvSJxKZbZjVauNA1nOfz2uoOJP9W8GhgSBRxM7gor0TTlsoaVEC1YTM9Tv5AhaypUs25xxfgArvLildZ7V3dSF4guCRytXKpquuShbBjHEq0wypW2QTxY4mB1gcwEJcnOnvJ0bPsueelqcAuWcviFmLfablPC4TVOueQfL2Ruk7qHSneYe03AoxJQwaYd4lvEj4Sjq9Sopo95SeEiES9jOPMvOhpq4GQaiyFwzSy6DZ5SRkRZYgHA45efUcdUascxreGSyHtPwPvwpXaFOAaOurJSWZ2fLpVsnzrE31aaoo4M2xcr8XnpOs/njnnBZTKggGuFw1khPqwY4I9VLC8yW7k2BNU9HTiVedBsvGwHJlKrC9yd+L14jifj3mRnRT/LrIzG42UMQ4LqyiSLRbDjWVNqOIqxe6NVbOdgJuxWYSO+LzyLzsPzNxxT3hBkNlm2LO8t8LAA0Vdrx6NWjW7Ecr9iMucn0xSidpfoJgOxzg9xDebRjAeKpY0xFFVWoqPEFnD2IJoto3kC2t7Xek/f/jkvNi7qM/Wtoaz2cbUM8+dASbu0huvXtkiebIXBb/uP7KPbaLZj4Iv8aFGLlqqJm6EBBz5W10HbGs10sb5aw+UZKByodMyUwkn5zFxjpG9H8BDGlrF7xNmMY6DiCbyp2TuORONs=
-  app: fit-tracker-api
+    secure: i07Mja1bSWNlyK/djSF808CWs1pMYAObUNnS9xhJwDGEvrLKgnHGQmDVg/ie76wECWw9a+1P0XqXqycSOFy0iT3v6iko0K5RAZm+X5Vrp2ueSpGzN983xnVilucqgdleuGHNXPRak7txxtUPS+hxZNciMPZ0AM1kCw88bTpAiWXWOtzo0pgqLZyHj+xR1cxCF6Lhhfs0+7LRjgf3WfisMLqtW6tMY0mzNg8qtP5pt52A4jUrcdwNTtVBgTU8tlU94xVT0jlOBYHiqFBs4gckHqkq9Oqq+6rn7AaHLUNreX8sQKmlD9BVhwNz21X4VgcgeTdd39mBts/RJT/IINn0VZTGQ/UBH9kFIi5wUUYnjDHBA3xXWJGjEJxxvL3+QBC74qQpR+w1GGASvKDxS2A6k/PBVf0y6sGUX2fli4A5SjGjXrEu+BSPpGw+WaYDawNKbl2w55+uBcVkS6bTFLCEwFFHebGrylg3fkGv3FSI0XTh+QuXmAOHJoQsTjlu8IAQg3ArfBsDn3OdlQHEubXocdMm21QLa5SfwERjc4UaeS+q1OUdpvZyY9T6S0WUkkJUP3ZA0nzRRSabCHqorVXBTwQrkxLQ3JjGmZZGhKwKcICNwThh6BwEL/zqqEgZuipnObvThacECNpNYnM2qmsuM9zbjOPHtSTTpiFTtqYzfJU=
+  app: fit-tracker
   on:
-    repo: dsawyer13/fit-tracker-api
+    repo: dsawyer13/fit-tracker
