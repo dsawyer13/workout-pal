@@ -42,7 +42,7 @@ export default class TableForm extends React.Component {
 
     return (
       <>
-        <td>
+        <td className="select-td">
           <Select
             options={groupedOptions}
             formatGroupLabel={formatGroupLabel}

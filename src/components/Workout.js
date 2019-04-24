@@ -32,7 +32,7 @@ export class Workout extends React.Component {
         <span className="sets">{setsNum}<span className="plain"> sets </span></span>
         <span className="reps">{repsNum}<span className="plain"> reps </span></span>
         <button className="button danger workout" onClick={this.deleteWorkout}>
-          Delete
+          X
         </button>
       </div>
     );

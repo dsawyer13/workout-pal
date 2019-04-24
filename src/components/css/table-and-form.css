@@ -25,6 +25,11 @@
   padding-left: 12px;
 }
 
+.select {
+  width: 220px;
+
+}
+
 .sets-reps {
   flex-grow: 0.75;
 }
@@ -35,9 +40,6 @@
 
 .button2 {
   padding-left: 0px;
-}
-.form-group {
-  margin-bottom: 1rem;
 }
 
 .label {

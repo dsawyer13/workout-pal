@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import HomePage from './components/HomePage.js';
 import LandingPage from './components/LandingPage.js';
 import store from './store';
-import './index.css';
+import './app.css';
 
 
 ReactDom.render(

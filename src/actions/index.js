@@ -1,25 +1,5 @@
 import { API_BASE_URL } from "../config";
 
-//figure out how to get this posted to the db and state
-export const ADD_EXERCISE_SUCCESS = "ADD_EXERCISE_SUCCESS";
-export const addExerciseSuccess = (name, weight, sets, reps) => ({
-  type: ADD_EXERCISE_SUCCESS,
-  name,
-  weight,
-  sets,
-  reps
-});
-
-export const addExercise = (id, exercise) => dispatch => {
-  fetch(`${API_BASE_URL}/${id}`, {
-    method: "put",
-    body: exercise
-  }).then(res => {
-    if (res.ok) {
-      dispatch(fetchWorkouts());
-    }
-  });
-};
 
 export const ADD_WORKOUT_SUCCESS = "ADD_WORKOUT_SUCCESS";
 export const addWorkoutSuccess = workout => ({
