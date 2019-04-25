@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, "client/build")));
 
-app.use("/workouts", workoutsRouter);
+app.use("/api/workouts", workoutsRouter);
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
