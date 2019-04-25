@@ -1,4 +1,5 @@
-import { API_BASE_URL } from "../config";
+import { PORT } from "..../config";
+const API_BASE_URL = `http://localhost:${PORT}/api/workouts`
 
 
 export const ADD_WORKOUT_SUCCESS = "ADD_WORKOUT_SUCCESS";
