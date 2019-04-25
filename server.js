@@ -1,11 +1,18 @@
+require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require("path");
-// const cors = require("cors");
+const cors = require("cors");
 const PORT = process.env.PORT || 3001;
 
 // const { PORT, DATABASE_URL, CLIENT_ORIGIN } = require("./config");
+
+app.use(
+    cors({
+        origin: CLIENT_ORIGIN
+    })
+);
 
 const { router: workoutsRouter } = require("./workouts/router");
 
