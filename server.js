@@ -1,10 +1,8 @@
-"use strict";
-
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 // const cors = require("cors");
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 3001;
 
 // const { PORT, DATABASE_URL, CLIENT_ORIGIN } = require("./config");
 
@@ -12,6 +10,7 @@ const { router: workoutsRouter } = require("./workouts/router");
 
 const app = express();
 
+app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 if (process.env.NODE_ENV === "production") {
