@@ -1,4 +1,4 @@
-const API_BASE_URL = '/api/workouts';
+import {API_BASE_URL} from '../config'; 
 
 
 export const ADD_WORKOUT_SUCCESS = "ADD_WORKOUT_SUCCESS";
