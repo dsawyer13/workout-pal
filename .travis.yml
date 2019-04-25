@@ -7,7 +7,8 @@ services:
 - mongodb
 deploy:
   provider: heroku
-  api_key: 53e73846-387b-4032-a732-fa353916c275
-  app: fit-tracker-api
+  api_key:
+    secure: ox5tJ05HDqsnm1rmFwOmoXddjQ7R3CGXsqc74/uwCriLnqqK2sksnMgEP4oUKsp6v/hVvO6lxh2iE2YEgTC1BTG13KAMYh508Bu3Mj03GVFNQfdKFptEW8pKF4yv+JMFsAFtjrOQk9aQVCUosQKvBVNknrV1jCzuDQzWFSbqNHSHorjs9Aq33EIdVUGp2bKxJ7rj78qX1pJk0Et22P58SybtmLBSqHhDuPYzTb5j76y306agWF7gnx5YNoTK42sk8G0OoB0DZaa5UNlGt9ntCH28jxHlGsukEBL7psQ+vpLHwx3U7HpyK9h3AhXJUgrDHiZ31gp3sPeqFrlRvyYxY2TleGqmi3vsOkNYxy+rA3s1PxaBH3pOmszlkrrHvIg0src8MhNMT8wPCTS6g7A3nMdbm6ykEhhX9U3eY7tbobNuYQHMCUumaE57+ZyVVtYic4EFKP12MzctPMgHKkKFrI+DfThkIcamZBV8J2Dvk2rtKS8QdMV+R/fSKYtWAMo7+Og56ZYdky8BoX+ydUh8tM3Da7NTECoMSyCyZYtEzjgZ/C/bcSotFe4et86+/LHBFwfl5aSrSnCS18RKlGtm6lVMot9Y0gCSIBQvJ1qBbHx5E/KCYYuGfm/D8a541w1cMrBAZ1u7xYGb5R/tsz5L5RRIqBnBs66Dpf5WND9xo7k=
+  app: workoutpal
   on:
-    repo: dsawyer13/fit-tracker-api
+    repo: dsawyer13/fit-tracker
