@@ -1,4 +1,4 @@
-const API_BASE_URL = `/api/workouts`;
+const API_BASE_URL = 'https://workoutpal.herokuapp.com/api/workouts';
 
 
 export const ADD_WORKOUT_SUCCESS = "ADD_WORKOUT_SUCCESS";
