@@ -53,5 +53,5 @@
     "url": "https://github.com/dsawyer13/fit-tracker/issues"
   },
   "homepage": "./",
-  "proxy": "https://workoutpal.herokuapp.com/"
+  "proxy": "http://localhost:3001"
 }
