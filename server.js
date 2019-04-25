@@ -10,7 +10,7 @@ const { router: workoutsRouter } = require("./workouts/router");
 
 const app = express();
 
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyPaser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 if (process.env.NODE_ENV === "production") {
