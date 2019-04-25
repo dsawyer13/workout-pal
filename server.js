@@ -6,7 +6,7 @@ const path = require("path");
 const cors = require("cors");
 const PORT = process.env.PORT || 3001;
 
-// const { PORT, DATABASE_URL, CLIENT_ORIGIN } = require("./config");
+const { PORT, DATABASE_URL, CLIENT_ORIGIN } = require("./config");
 
 app.use(
     cors({
@@ -29,7 +29,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
 })
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://user:password123@ds147436.mlab.com:47436/heroku_x8kjmqlp")
+mongoose.connect(process.env.DATABASE_URL || "mongodb://user:password123@ds147436.mlab.com:47436/heroku_x8kjmqlp")
 
 app.listen(PORT, function() {
   console.log(`API listening on port ${PORT}!`)
