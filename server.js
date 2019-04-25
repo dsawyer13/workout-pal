@@ -6,6 +6,9 @@ const cors = require("cors");
 
 const { PORT, DATABASE_URL, CLIENT_ORIGIN } = require("./config");
 
+
+const app = express();
+
 app.use(
     cors({
         origin: CLIENT_ORIGIN
@@ -14,7 +17,6 @@ app.use(
 
 const { router: workoutsRouter } = require("./workouts/router");
 
-const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
