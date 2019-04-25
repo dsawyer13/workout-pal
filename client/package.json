@@ -52,6 +52,6 @@
   "bugs": {
     "url": "https://github.com/dsawyer13/fit-tracker/issues"
   },
-  "homepage": "https://github.com/dsawyer13/fit-tracker#readme",
+  "homepage": "./",
   "proxy": "http://localhost:3001"
 }
