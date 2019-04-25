@@ -2,21 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require("path");
-// const cors = require("cors");
 
-const { PORT } = require("./config");
+const PORT = process.env.PORT || 3001
 
 const app = express();
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
-  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
-  if (req.method === "OPTIONS") {
-    return res.send(204);
-  }
-  next();
-});
 
 const { router: workoutsRouter } = require("./workouts/router");
 
@@ -24,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  require('dotenv').config();
 }
 
 app.use(express.static(path.join(__dirname, "client/build")));

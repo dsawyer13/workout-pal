@@ -1,4 +1,3 @@
-import { PORT } from "..../config";
 const API_BASE_URL = `/api/workouts`;
 
 
