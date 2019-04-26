@@ -56,7 +56,7 @@ export default class AddWorkoutForm extends React.Component {
 
   addWorkout = e => {
     e.preventDefault();
-    if (this.state.exercises.length > 1 && this.props.onAdd) {
+    if (this.state.exercises.length == 0  && this.props.onAdd) {
       console.log(this.state.exercises);
       this.props.onAdd(this.state.exercises);
     }
