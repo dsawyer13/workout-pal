@@ -75,10 +75,6 @@ button:focus, input[type="button"]:focus {
 }
 
 @media only screen and (min-width: 300px) and (max-width: 480px) {
-  html {
-    min-width: 100vw;
-    min-height: 100vh;
-  }
 
   .navBar {
     padding: 0;

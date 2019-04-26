@@ -7,7 +7,7 @@ export const addWorkoutSuccess = workout => ({
 });
 
 export const addWorkout = exercises => dispatch => {
-  fetch(API_BASE_URL, {
+  return fetch(API_BASE_URL, {
     method: "post",
     headers: {
       Accept: "application/json",
@@ -24,7 +24,6 @@ export const addWorkout = exercises => dispatch => {
     .then(workout => {
       dispatch(addWorkoutSuccess(workout));
       dispatch(fetchWorkouts());
-      return(workout)
     });
 };
 
@@ -35,7 +34,7 @@ export const fetchWorkoutsSuccess = workouts => ({
 });
 
 export const fetchWorkouts = () => dispatch => {
-  fetch(`${API_BASE_URL}`, {
+  return fetch(`${API_BASE_URL}`, {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json"
@@ -55,22 +54,24 @@ export const fetchWorkouts = () => dispatch => {
 };
 
 export const deleteWorkout = id => dispatch => {
-  fetch(`${API_BASE_URL}/${id}`, {
+  return fetch(`${API_BASE_URL}/${id}`, {
     method: "delete"
   }).then(res => {
     if (res.ok) {
       dispatch(fetchWorkouts());
     }
+    return Promise.reject(res.statusText)
   });
 };
 
 export const deleteExercise = id => dispatch => {
-  fetch(`${API_BASE_URL}/exercise/${id}`, {
+  return fetch(`${API_BASE_URL}/exercise/${id}`, {
     method: "delete"
   }).then(res => {
     if (res.ok) {
       dispatch(fetchWorkouts());
     }
+    return Promise.reject(res.statusText)
   });
 };
 
@@ -87,5 +88,6 @@ export const editExercise = (exercise, wID, eID) => dispatch => {
     if (res.ok) {
       dispatch(fetchWorkouts());
     }
+    return Promise.reject(res.statusText)
   });
 };

@@ -7,148 +7,95 @@ import {
   fetchWorkoutsSuccess,
   deleteExercise,
   editExercise
-} from './index.js';
+} from "./index.js";
 
-import { API_BASE_URL } from '../config';
+import { API_BASE_URL } from "../config";
 
-import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
-import fetchMock from 'fetch-mock';
-const middlewares = [thunk]
+import configureMockStore from "redux-mock-store";
+import thunk from "redux-thunk";
+import fetchMock from "fetch-mock";
+const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
+const store = mockStore({});
 
-
-describe('addWorkoutSuccess', () => {
-  it('Should return the action', () => {
+describe("addWorkoutSuccess", () => {
+  it("Should return the action", () => {
     const workout = {
-    "id": "5cc33c0af1cf1c00241f6a8c",
-    "date": "2019-04-26T17:12:42.066Z",
-    "exercises": [
-          {
-            "_id": "5cc33c0af1cf1c00241f6a8d",
-            "name": "Shoulder Press",
-            "weight": 195,
-            "sets": 3,
-            "reps": 5
-          }
-        ]
-      }
+      id: "5cc33c0af1cf1c00241f6a8c",
+      date: "2019-04-26T17:12:42.066Z",
+      exercises: [
+        {
+          _id: "5cc33c0af1cf1c00241f6a8d",
+          name: "Shoulder Press",
+          weight: 195,
+          sets: 3,
+          reps: 5
+        }
+      ]
+    };
     const action = addWorkoutSuccess(workout);
     expect(action.type).toEqual(ADD_WORKOUT_SUCCESS);
     expect(action.workout).toEqual(workout);
   });
 });
 
-
-describe('fetchWorkoutsSuccess', () => {
-  it('Should return the action', () => {
+describe("fetchWorkoutsSuccess", () => {
+  it("Should return the action", () => {
     const workouts = {
-    "id": "5cc33c0af1cf1c00241f6a8c",
-    "date": "2019-04-26T17:12:42.066Z",
-    "exercises": [
-          {
-            "_id": "5cc33c0af1cf1c00241f6a8d",
-            "name": "Shoulder Press",
-            "weight": 295,
-            "sets": 300,
-            "reps": 5
-            }
-          ]
+      id: "5cc33c0af1cf1c00241f6a8c",
+      date: "2019-04-26T17:12:42.066Z",
+      exercises: [
+        {
+          _id: "5cc33c0af1cf1c00241f6a8d",
+          name: "Shoulder Press",
+          weight: 295,
+          sets: 300,
+          reps: 5
         }
+      ]
+    };
     const action = fetchWorkoutsSuccess(workouts);
     expect(action.type).toEqual(FETCH_WORKOUTS_SUCCESS);
-    expect(action.workouts).toEqual(workouts)
-
+    expect(action.workouts).toEqual(workouts);
   });
 });
 
-// describe('fetchWorkouts', () => {
-//   it('Should dispatch fetchWorkoutsSuccess', () => {
-//     const workouts = {
-//     "id": "5cc33c0af1cf1c00241f6a8c",
-//     "date": "2019-04-26T17:12:42.066Z",
-//     "exercises": [
-//           {
-//             "_id": "5cc33c0af1cf1c00241f6a8d",
-//             "name": "Shoulder Press",
-//             "weight": 295,
-//             "sets": 300,
-//             "reps": 5
-//             }
-//           ]
-//         };
-//       global.fetch = jest.fn().mockImplementation(() =>
-//         Promise.resolve({
-//           ok: true,
-//           json() {
-//             return workouts;
-//           }
-//         })
-//     );
-//
-//     const dispatch = jest.fn();
-//     return fetchWorkouts()(dispatch).then(() => {
-//       expect(fetch).toHaveBeenCalledWith('https://workoutpal.herokuapp.com/api/workouts');
-//       expect(dispatch).toHaveBeenCalledWith(fetchWorkoutsSuccess(workouts))
-//     });
-//   });
-// })
-
-// describe('deleteWorkout', () => {
-//   it('Should dispatch fetchWorkouts', () => {
-//     const workouts
-//   })
-// })
 describe("async actions", () => {
+  let calledActions;
+
+  beforeEach(() => {
+    store.clearActions();
+    calledActions = store.getActions();
+  });
+
   afterEach(() => {
-    fetchMock.reset()
-  })
+    fetchMock.reset().restore();
+  });
 
+  it("should post exercises and dispatch ADD_WORKOUT_SUCCESS", () => {
+    const body = {
+      exercises: { name: "foo", weight: "bar", sets: "bizz", reps: "bang" }
+    };
 
-  it('References correct action on success', () => {
-    // const exercises = ({exercises: {name: "foo", weight: "bar", sets: "bizz", reps: "bang"}})
-    // fetchMock.postOnce(API_BASE_URL, {
-    //   body: {exercises},
-    //   headers: {'content-type': 'application/json'}
-    // })
-    //
-    //
-    // const expectedActions = [
-    //   { type: ADD_WORKOUT_SUCCESS, body: {workouts: {id:"5", date:"2", exercises: {name: "foo", weight: "bar", sets: "bizz", reps: "bang"}}} }
-    // ]
-    // const store = mockStore({workouts: []})
-    //
-    // store.dispatch(addWorkout(exercises))
-    //
-    // expect(store.getActions()).toEqual(expectedActions)
-    //
-    // })
-    const responseBody = {response: 'data from the server'};
+    fetchMock.postOnce(API_BASE_URL, body);
 
-    fetchMock.once(API_BASE_URL, {
-      status: 200,
-      body: JSON.stringify(responseBody),
-      statusText: 'OK',
-      headers: {'Content-Type': 'application/json'},
-      sendAsJson: false
-    }, {method: 'POST'});
-
-    fetch(API_BASE_URL, {
-      method: 'post',
-      body: JSON.stringify({data: 'Sent payload'}),
-      headers : {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
+    const expectedActions = {
+      type: {
+        ADD_WORKOUT_SUCCESS,
+        body: {
+          exercises: { name: "foo", weight: "bar", sets: "bizz", reps: "bang" }
         }
-      })
-      .then(function (res) {
-      expect(res.status).toEqual(200);
-      return res.json();
-      })
-      .then(function (json) {
-        expect(json).toEqual(responseBody);
+      },
+      type: { FETCH_WORKOUTS_SUCCESS }
+    };
 
-        done();
-      })
-    })
+    store.dispatch(addWorkout()).then(() => {
+      expect(fetchMock.called(API_BASE_URL)).toBe(true);
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
+  it("should return workouts and dispatch FETCH_WORKOUTS_SUCCESS", () => {
+    fetchMock.once
   })
+});
