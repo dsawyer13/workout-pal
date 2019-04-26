@@ -19,7 +19,7 @@ body {
 }
 
 .wrapper {
-  padding: 75px 0;
+  padding: 75px 0 0 0;
   position: absolute;
   top: 0;
   bottom: 0;
