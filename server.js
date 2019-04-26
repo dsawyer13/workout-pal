@@ -22,7 +22,7 @@ app.get("*", (req, res) => {
 
 mongoose.connect(
   process.env.MONGODB_URI ||
-    "mongodb://user:password123@ds147436.mlab.com:47436/heroku_x8kjmqlp"
+    "mongodb://heroku_x8kjmqlp:oj25sqphknpqrssaljcpkb8nap@ds147436.mlab.com:47436/heroku_x8kjmqlp"
 );
 
 app.listen(PORT, function() {
