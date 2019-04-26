@@ -1,5 +1,6 @@
 import {API_BASE_URL} from '../config';
 
+
 export const ADD_WORKOUT_SUCCESS = "ADD_WORKOUT_SUCCESS";
 export const addWorkoutSuccess = workout => ({
   type: ADD_WORKOUT_SUCCESS,
@@ -7,7 +8,7 @@ export const addWorkoutSuccess = workout => ({
 });
 
 export const addWorkout = exercises => dispatch => {
-  return fetch(API_BASE_URL, {
+  fetch(API_BASE_URL, {
     method: "post",
     headers: {
       Accept: "application/json",
@@ -16,7 +17,7 @@ export const addWorkout = exercises => dispatch => {
     body: JSON.stringify({ exercises: exercises })
   })
     .then(res => {
-      if (res.ok) {
+      if (!res.ok) {
         return Promise.reject(res.statusText);
       }
       return res.json();
@@ -34,7 +35,7 @@ export const fetchWorkoutsSuccess = workouts => ({
 });
 
 export const fetchWorkouts = () => dispatch => {
-  return fetch(`${API_BASE_URL}`, {
+  fetch(`${API_BASE_URL}`, {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json"
@@ -54,37 +55,23 @@ export const fetchWorkouts = () => dispatch => {
 };
 
 export const deleteWorkout = id => dispatch => {
-  return fetch(`${API_BASE_URL}/${id}`, {
+  fetch(`${API_BASE_URL}/${id}`, {
     method: "delete"
   }).then(res => {
     if (res.ok) {
-      return res.json();
+      dispatch(fetchWorkouts());
     }
-    throw new Error(res.statusText);
-  })
-  .then(response => {
-    dispatch(fetchWorkouts());
-  })
-  .catch(err => {
-    console.error('An error occured:', err.error)
-  })
+  });
 };
 
 export const deleteExercise = id => dispatch => {
-  return fetch(`${API_BASE_URL}/exercise/${id}`, {
+  fetch(`${API_BASE_URL}/exercise/${id}`, {
     method: "delete"
   }).then(res => {
     if (res.ok) {
-      return res.json();
+      dispatch(fetchWorkouts());
     }
-    throw new Error(res.statusText)
-  })
-  .then(response => {
-    dispatch(fetchWorkouts())
-  })
-  .catch(err => {
-    console.error('An error occured:', err.error)
-  })
+  });
 };
 
 export const editExercise = (exercise, wID, eID) => dispatch => {
@@ -100,6 +87,5 @@ export const editExercise = (exercise, wID, eID) => dispatch => {
     if (res.ok) {
       dispatch(fetchWorkouts());
     }
-    return Promise.reject(res.statusText)
   });
 };
