@@ -1,5 +1,4 @@
-import {API_BASE_URL} from '../config'; 
-
+import {API_BASE_URL} from '../config';
 
 export const ADD_WORKOUT_SUCCESS = "ADD_WORKOUT_SUCCESS";
 export const addWorkoutSuccess = workout => ({
@@ -17,7 +16,7 @@ export const addWorkout = exercises => dispatch => {
     body: JSON.stringify({ exercises: exercises })
   })
     .then(res => {
-      if (!res.ok) {
+      if (res.ok) {
         return Promise.reject(res.statusText);
       }
       return res.json();
@@ -25,6 +24,7 @@ export const addWorkout = exercises => dispatch => {
     .then(workout => {
       dispatch(addWorkoutSuccess(workout));
       dispatch(fetchWorkouts());
+      return(workout)
     });
 };
 

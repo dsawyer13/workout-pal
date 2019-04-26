@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./css/landing-page.css";
 
+
 export default function LandingPage() {
   return (
     <body className="background">

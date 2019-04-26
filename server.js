@@ -28,3 +28,5 @@ mongoose.connect(
 app.listen(PORT, function() {
   console.log(`API listening on port ${PORT}!`);
 });
+
+module.exports = {app}

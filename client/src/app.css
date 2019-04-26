@@ -4,14 +4,27 @@
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,400i,700i,700|Roboto|Ubuntu:400,700');
 
-
-body {
+body, html {
+  height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
+}
+
+body {
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+}
+
+.wrapper {
+  padding: 75px 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .title1 {
@@ -43,10 +56,11 @@ h1 > a {
 .navBar {
   background-color: #212121;
   text-align: left;
+  margin-top: -75px;
   padding-left: 50px;
   height: 75px;
   font-size: 24px;
-  postion: fixed;
+  position: fixed;
   left: 0;
   right: 0;
   top: 0;

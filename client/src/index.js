@@ -11,7 +11,7 @@ ReactDom.render(
   <Provider store={store}>
     <Router>
       <Switch>
-        <>
+        <div className="wrapper">
           <nav className="navBar">
             <header>
               <h1 className="logo">
@@ -26,7 +26,7 @@ ReactDom.render(
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/home" component={HomePage} />
           </>
-        </>
+        </div>
       </Switch>
     </Router>
   </Provider>,

@@ -5,9 +5,10 @@ const chaiHttp = require('chai-http');
 const faker = require('faker');
 const mongoose = require('mongoose');
 
+const {app} = require('../server.js')
 const { Workout } = require('../workouts/models.js');
-const { TEST_DATABASE_URL } = require('../config')
-
+const { TEST_DATABASE_URL} = require('../config')
+const PORT = 3002
 
 let server;
 
@@ -43,9 +44,9 @@ function closeServer() {
   });
 }
 
-if (require.main === module) {
-  runServer(DATABASE_URL).catch(err => console.error(err));
-}
+// if (require.main === module) {
+//   runServer(DATABASE_URL).catch(err => console.error(err));
+// }
 
 const should = chai.should();
 chai.use(chaiHttp);
