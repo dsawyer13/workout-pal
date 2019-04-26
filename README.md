@@ -1,68 +1,23 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Workout Pal Workout Log App
+An application that allows users to create log exercises for each day's workout.
 
-## Available Scripts
+## Live App
+https://workoutpal.herokuapp.com/
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Summary
+  Beginiing at the Landing Page you are given the single option to click a 'GET STARTED' button.  This button redirects the user to the Home Page.  The navigation bar has the text 'Workout Pal' that redirects to the Landing Page from every page.  After being sent to the Landing Page, the user has a single option of clicking the 'NEW WORKOUT' button.  Once clicked, this button renders a form containing inputs for 'Exercise', 'Weight', 'Sets', and 'Reps'.  Once the inputs are filled the user can click 'Add Exercise' or 'Cancel Workout'.  Add Exercise submits the form and adds the result as a row in a table above the form.  Cancel Workout closes the form entirely and removes any previously added exercises.  Once an exercise is added, it can be edited or deleted with 'edit' and 'delete' buttons adjacent to it. After the user is finished adding exercise they click 'Finish Workout'.  This adds a 'Previous Workouts' section above that holds a list of previous workouts.  The list entries in 'Previous Workouts' expand on click, and show the table of exercises.  These exercises can be edited and deleted just like the original table. The previous workout entries can be deleted completely by clicking the red 'X' button on the workout item.
+  
+  ## Built With
+  * HTML
+  * CSS
+  * React
+  * Node.JS
+  * MongoDB
+  
+  ## Screenshots
+  
+  ![Landing Page](https://imgur.com/ozeuoxb.png "Landing Page")
+  
+  ![Previous Workouts](https://imgur.com/FLCgujN.png "Previous Workouts")
+  
+  ![New Workout](https://imgur.com/Jb0pFIw.png "New Workout")
