@@ -58,10 +58,16 @@ export const deleteWorkout = id => dispatch => {
     method: "delete"
   }).then(res => {
     if (res.ok) {
-      dispatch(fetchWorkouts());
+      return res.json();
     }
-    return Promise.reject(res.statusText)
-  });
+    throw new Error(res.statusText);
+  })
+  .then(response => {
+    dispatch(fetchWorkouts());
+  })
+  .catch(err => {
+    console.error('An error occured:', err.error)
+  })
 };
 
 export const deleteExercise = id => dispatch => {
@@ -69,10 +75,16 @@ export const deleteExercise = id => dispatch => {
     method: "delete"
   }).then(res => {
     if (res.ok) {
-      dispatch(fetchWorkouts());
+      return res.json();
     }
-    return Promise.reject(res.statusText)
-  });
+    throw new Error(res.statusText)
+  })
+  .then(response => {
+    dispatch(fetchWorkouts())
+  })
+  .catch(err => {
+    console.error('An error occured:', err.error)
+  })
 };
 
 export const editExercise = (exercise, wID, eID) => dispatch => {

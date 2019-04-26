@@ -5,6 +5,7 @@ import {
   FETCH_WORKOUTS_SUCCESS,
   fetchWorkouts,
   fetchWorkoutsSuccess,
+  deleteWorkout,
   deleteExercise,
   editExercise
 } from "./index.js";
@@ -96,6 +97,18 @@ describe("async actions", () => {
   });
 
   it("should return workouts and dispatch FETCH_WORKOUTS_SUCCESS", () => {
-    fetchMock.once
-  })
+
+    fetchMock.getOnce(API_BASE_URL,{
+      headers: {"content-type": "application/json"}
+    });
+
+    const expectedActions = {
+      type: {FETCH_WORKOUTS_SUCCESS, workouts: []}
+    };
+
+    store.dispatch(fetchWorkouts()).then(() => {
+      expect(fetchMock.called(API_BASE_URL)).toBe(true);
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
 });
