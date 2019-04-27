@@ -7,7 +7,7 @@ import "./css/workout.css";
 
 export class Workout extends React.Component {
   deleteWorkout = e => {
-    this.props.onDelete(this.props.id);
+    this.props.dispatch(deleteWorkout(this.props.id));
   };
 
   render() {

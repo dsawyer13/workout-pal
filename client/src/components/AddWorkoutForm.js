@@ -202,7 +202,7 @@ export default class AddWorkoutForm extends React.Component {
             <div className="col">
               <div className="form-group">
                 <label className="form-label">Weight</label>
-                <div class="input-group">
+                <div>
                   <input
                     className="form-control"
                     type="number"
@@ -213,8 +213,8 @@ export default class AddWorkoutForm extends React.Component {
                     value={this.state.weight || ""}
                     required
                   />
-                  <div class="input-group-append">
-                    <span class="input-group-text">lbs</span>
+                  <div>
+                    <span>lbs</span>
                   </div>
                 </div>
               </div>
@@ -252,7 +252,7 @@ export default class AddWorkoutForm extends React.Component {
 
             <div className="col button1 button-row">
               <button
-                className="button primary"
+                className="button primary addButton"
                 type="submit"
                 onClick={this.displayHead}
               >

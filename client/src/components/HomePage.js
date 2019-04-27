@@ -66,7 +66,6 @@ export class HomePage extends React.Component {
       exerciseIndex: ""
     });
   };
-  
   deleteExercise = id => {
     this.props.dispatch(deleteExercise(id));
   };
@@ -77,7 +76,7 @@ export class HomePage extends React.Component {
         <AccordionItem key={index}>
           <AccordionItemHeading>
             <AccordionItemButton>
-              <Workout {...workout} onDelete={id => this.deleteExercise(id)}/>
+              <Workout {...workout} />
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
