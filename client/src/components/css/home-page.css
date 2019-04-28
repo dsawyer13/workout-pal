@@ -98,14 +98,12 @@
   }
 
   .homePage table {
-    font-size: 12px;
-  }
-  .accordion__panel td {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .accordion__panel tr {
     line-height: 0.7rem;
+
   }
   .accordion__panel .input-group-append, .accordion__panel .input-group-text {
     display: none;

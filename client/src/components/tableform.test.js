@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 
-import TableForm from '../TableForm.js';
+import TableForm from './TableForm.js';
 
 describe('<TableForm />', () => {
   it('Renders without crashing', () => {

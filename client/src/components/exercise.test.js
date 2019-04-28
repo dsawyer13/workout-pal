@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 
-import Exercise from '../Exercise.js';
+import Exercise from './Exercise.js';
 
 describe('<Exercise />', () => {
   it('Renders without Crashing', () => {

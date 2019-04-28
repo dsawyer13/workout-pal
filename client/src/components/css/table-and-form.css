@@ -195,6 +195,9 @@ button, input {
   .add-workout {
     font-size: 30px;
   }
+  .table {
+    font-size: 16px;
+  }
 }
 
 @media (min-width: 480px) and (max-width: 1024px) {

@@ -42,7 +42,6 @@ export const fetchWorkouts = () => dispatch => {
     }
   })
     .then(res => {
-      console.log(res);
       if (!res.ok) {
         return Promise.reject(res.statusText);
       }
@@ -75,7 +74,6 @@ export const deleteExercise = id => dispatch => {
 };
 
 export const editExercise = (exercise, wID, eID) => dispatch => {
-  console.log(exercise, wID, eID);
   fetch(`${API_BASE_URL}/${wID}/${eID}`, {
     method: "put",
     headers: {

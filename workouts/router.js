@@ -10,7 +10,6 @@ router.get("/", (req, res) => {
       res.status(200).json(workouts.map(workout => workout.serialize()));
     })
     .catch(err => {
-      console.log(err);
       res.status(500).json({ message: "Internal Server Error" });
     });
 });
@@ -25,7 +24,6 @@ router.post("/", (req, res) => {
   Workout.create({ exercises: req.body.exercises })
     .then(workout => res.status(201).json(workout.serialize()))
     .catch(err => {
-      console.log(err);
       res.status(500).json({ error: "Internal Server Error" });
     });
 });
@@ -34,11 +32,9 @@ router.post("/", (req, res) => {
 router.delete("/:id", (req, res) => {
   Workout.findOneAndDelete({ _id: req.params.id })
     .then(() => {
-      console.log(`Deleted workout ${req.params.id}`);
       res.status(204).end();
     })
     .catch(err => {
-      console.log(err);
       res.status(500).json({ message: "Internal Server Error" });
     });
 });
@@ -50,11 +46,9 @@ router.delete("/exercise/:id", (req, res) => {
     { $pull: { exercises: { _id: req.params.id } } }
   )
     .then(() => {
-      console.log(`Deleted ${req.params.id}`);
       res.status(204).end();
     })
     .catch(err => {
-      console.log(err);
       res.status(500).json({ message: "Internal Server Error" });
     });
 });
@@ -77,14 +71,12 @@ router.put("/:id/:exerciseid", (req, res) => {
       updated[field] = req.body[field];
     }
   });
-  console.log(updated);
   Workout.findOneAndUpdate(
     { _id: req.params.id, "exercises._id": req.params.exerciseid },
     { $set: { "exercises.$": updated } }
   )
     .then(updatedExercise => res.status(204).end())
     .catch(err => {
-      console.log(err);
       res.status(500).json({ error: "Internal Server Error" });
     });
 });
