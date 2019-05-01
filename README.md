@@ -1,5 +1,5 @@
 # Workout Pal Workout Log App
-An application that allows users to create log exercises for each day's workout.
+An application that allows users to create and log exercises for each day's workout.
 
 ## Live App
 https://workoutpal.herokuapp.com/
