@@ -8,8 +8,6 @@ https://workoutpal.herokuapp.com/
   
   ![Landing Page](https://imgur.com/ozeuoxb.png "Landing Page")
   
-  ![Previous Workouts](https://imgur.com/FLCgujN.png "Previous Workouts")
-  
   ![New Workout](https://imgur.com/Jb0pFIw.png "New Workout")
 
 
