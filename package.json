@@ -23,7 +23,7 @@
     "faker": "^4.1.0",
     "if-env": "^1.0.4",
     "mocha": "^6.1.4",
-    "mongoose": "^5.4.20",
+    "mongoose": "^5.7.5",
     "nodemon": "^1.18.10"
   },
   "engines": {
