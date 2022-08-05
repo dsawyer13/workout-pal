@@ -13,7 +13,7 @@
     "fetch-mock": "^7.3.3",
     "http-proxy-middleware": "^0.19.1",
     "mocha": "^6.1.4",
-    "mongoose": "^5.4.20",
+    "mongoose": "^5.7.5",
     "nodemon": "^1.18.11",
     "react": "^16.8.6",
     "react-accessible-accordion": "^3.0.0",
